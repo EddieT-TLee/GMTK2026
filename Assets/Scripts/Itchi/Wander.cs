@@ -17,6 +17,9 @@ public class Wander : MonoBehaviour
     private float WalkTimer;
     private float WalkTimeInterval;
     private Camera cam;
+    private bool dirty;
+    private Animator animator;
+    private SpriteRenderer spriteRenderer;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -24,6 +27,8 @@ public class Wander : MonoBehaviour
         cam = Camera.main;
         PickTargetPosition();
         WalkTimeInterval = Random.Range(3, maxWaitTime);
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         
         // Set Indicator inactive by default
         hungerIndicator.SetActive(false);
@@ -43,9 +48,9 @@ public class Wander : MonoBehaviour
         }
 
         WalkTimer += Time.deltaTime;
-
+        
+        UpdateAnimator();
     }
-    
     
     void OnEnable()
     {
@@ -57,6 +62,7 @@ public class Wander : MonoBehaviour
 
         itchi.OnHappinessChanged += SetHappinessIndicator;
         itchi.OnHungerChanged += SetHungerIndicator;
+        itchi.OnHygieneChanged += SetHygieneStatus;
     }
 
     void OnDisable()
@@ -69,13 +75,28 @@ public class Wander : MonoBehaviour
 
         itchi.OnHappinessChanged -= SetHappinessIndicator;
         itchi.OnHungerChanged -= SetHungerIndicator;
+        itchi.OnHygieneChanged -= SetHygieneStatus;
+    }
+
+    private void UpdateAnimator()
+    {
+        if (animator == null) return;
+
+        // Walking is true Ithci hasn't reached their target yet
+        float deltaX = wanderTarget.x - transform.position.x;
+        bool isWalking = Mathf.Abs(deltaX) > 0.01f;
+
+        // Face the direction we're moving 
+        if (isWalking)
+            spriteRenderer.flipX = deltaX > 0;
+
+        animator.SetBool("IsWalking", isWalking);
+        animator.SetBool("IsDirty", dirty);
     }
     
     private void PickTargetPosition()
     {
         float randomX = Random.Range(-0.9f, 0.9f);
-
-        transform.rotation = randomX > 0 ? Quaternion.Euler(0, 0, 0) : Quaternion.Euler(0, 180, 0);
 
         // Change the positon to a world position
         float halfWidth = cam.orthographicSize * cam.aspect;
@@ -87,30 +108,11 @@ public class Wander : MonoBehaviour
         // Debug.Log(randomX);
     }
     
-    private void SetHappinessIndicator(float current, float max)
-    {
-        if (current / max < 0.25)
-        {
-            happinessIndicator.SetActive(true);
-        }
-        else
-        {
-            happinessIndicator.SetActive(false);
-        }
-    }
+    private void SetHappinessIndicator(float current, float max) => happinessIndicator.SetActive(current / max < 0.25);
+   
+    private void SetHungerIndicator(float current, float max) => hungerIndicator.SetActive(current / max < 0.25); 
 
-
-    private void SetHungerIndicator(float current, float max)
-    {
-        if (current / max < 0.25)
-        {
-            hungerIndicator.SetActive(true);
-        }
-        else
-        {
-            hungerIndicator.SetActive(false);
-        }
-    }
+    private void SetHygieneStatus(float current, float max) => dirty = (current / max < 0.25);
     
     
     
