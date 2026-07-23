@@ -83,6 +83,8 @@ public class PopupMenu : MonoBehaviour
             yield return null;    
         }
 
+        buttonRectTransform.position = endButtonPosition;
+        menuRectTransform.position = endMenuPosition;
         yield break;
     }
 
@@ -100,6 +102,8 @@ public class PopupMenu : MonoBehaviour
             yield return null;
         }
 
+        buttonRectTransform.position = startButtonPosition;
+        menuRectTransform.position = startMenuPosition;
         yield break;
     }
 }
