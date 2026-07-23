@@ -17,6 +17,7 @@ public class Wander : MonoBehaviour
     private float WalkTimer;
     private float WalkTimeInterval;
     private Camera cam;
+    private bool dirty;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -57,6 +58,7 @@ public class Wander : MonoBehaviour
 
         itchi.OnHappinessChanged += SetHappinessIndicator;
         itchi.OnHungerChanged += SetHungerIndicator;
+        itchi.OnHygieneChanged += SetHygieneStatus;
     }
 
     void OnDisable()
@@ -69,6 +71,7 @@ public class Wander : MonoBehaviour
 
         itchi.OnHappinessChanged -= SetHappinessIndicator;
         itchi.OnHungerChanged -= SetHungerIndicator;
+        itchi.OnHygieneChanged -= SetHygieneStatus;
     }
     
     private void PickTargetPosition()
@@ -89,29 +92,19 @@ public class Wander : MonoBehaviour
     
     private void SetHappinessIndicator(float current, float max)
     {
-        if (current / max < 0.25)
-        {
-            happinessIndicator.SetActive(true);
-        }
-        else
-        {
-            happinessIndicator.SetActive(false);
-        }
+        happinessIndicator.SetActive(current / max < 0.25);
     }
 
 
     private void SetHungerIndicator(float current, float max)
     {
-        if (current / max < 0.25)
-        {
-            hungerIndicator.SetActive(true);
-        }
-        else
-        {
-            hungerIndicator.SetActive(false);
-        }
+        hungerIndicator.SetActive(current / max < 0.25);
     }
-    
+
+    private void SetHygieneStatus(float current, float max)
+    {
+        dirty = (current / max < 0.25);
+    }
     
     
 }
