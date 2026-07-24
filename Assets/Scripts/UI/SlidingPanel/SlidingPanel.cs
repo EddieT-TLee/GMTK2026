@@ -22,8 +22,6 @@ public class SlidingPanel : MonoBehaviour
 
     public void TogglePanel()
     {
-        atStart = !atStart;
-
         if (coroutine != null)
         {
             StopCoroutine(coroutine);
@@ -37,6 +35,8 @@ public class SlidingPanel : MonoBehaviour
         {
             coroutine = StartCoroutine(toStart());
         }
+
+        atStart = !atStart;
     }
 
     private IEnumerator toEnd()
