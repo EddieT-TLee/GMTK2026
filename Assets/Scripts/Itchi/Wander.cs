@@ -19,7 +19,6 @@ public class Wander : MonoBehaviour
     private Camera cam;
     private bool dirty;
     private Animator animator;
-    private SpriteRenderer spriteRenderer;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -28,7 +27,6 @@ public class Wander : MonoBehaviour
         PickTargetPosition();
         WalkTimeInterval = Random.Range(3, maxWaitTime);
         animator = GetComponent<Animator>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
         
         // Set Indicator inactive by default
         hungerIndicator.SetActive(false);
@@ -88,7 +86,9 @@ public class Wander : MonoBehaviour
 
         // Face the direction we're moving 
         if (isWalking)
-            spriteRenderer.flipX = deltaX > 0;
+        {
+            transform.rotation = deltaX > 0 ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
+        }
 
         animator.SetBool("IsWalking", isWalking);
         animator.SetBool("IsDirty", dirty);
