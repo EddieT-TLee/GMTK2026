@@ -3,14 +3,13 @@ using UnityEngine.UI;
 
 public class StatusPanel : MonoBehaviour
 {
-    [Header("itchi Refrence for Events")] [SerializeField]
-    private Stats itchi;
+    [Header("itchi Refrence for Events")]
+    [SerializeField] private Stats itchi;
 
-    [Header("Stat Bars UI Elements")] [SerializeField]
-    private Image HappinessBar;
-
-    [SerializeField] private Image HygieneBar;
-    [SerializeField] private Image HungerBar;
+    [Header("Stat Bars UI Elements")]
+    [SerializeField] private SegmentedBar HappinessBar;
+    [SerializeField] private SegmentedBar HygieneBar;
+    [SerializeField] private SegmentedBar HungerBar;
 
     void OnEnable()
     {
@@ -40,18 +39,17 @@ public class StatusPanel : MonoBehaviour
 
     private void UpdateHappinessBar(float current, float max)
     {
-        HappinessBar.fillAmount = Mathf.Clamp(current/max, 0, 1);
+        HappinessBar.SetFill(current/max);
     }
 
     private void UpdateHygieneBar(float current, float max)
     {
-        HygieneBar.fillAmount = Mathf.Clamp(current/max, 0, 1);
+        HygieneBar.SetFill(current / max);
     }
-    
     
     private void UpdateHungerBar(float current, float max)
     {
-        HungerBar.fillAmount = Mathf.Clamp(current/max, 0, 1);
+        HungerBar.SetFill(current / max);
     }
 
 }
