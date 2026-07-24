@@ -61,15 +61,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 4854327429273110483, guid: a61dc74b6cf71fd4b9d72b576a403a03, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -217,42 +217,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6756379306002632979, guid: 160efc01890395c4b86e07bd163f0390, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1039520736206561261}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 160efc01890395c4b86e07bd163f0390, type: 3}
---- !u!114 &283552459183659786 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2138662564094063558, guid: 160efc01890395c4b86e07bd163f0390, type: 3}
-  m_PrefabInstance: {fileID: 2180145950055737548}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4864472668096854495}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!224 &925785104994348668 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1339930381517653680, guid: 160efc01890395c4b86e07bd163f0390, type: 3}
   m_PrefabInstance: {fileID: 2180145950055737548}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &4864472668096854495 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6756379306002632979, guid: 160efc01890395c4b86e07bd163f0390, type: 3}
-  m_PrefabInstance: {fileID: 2180145950055737548}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1039520736206561261
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4864472668096854495}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b90c30fa38902c41bb9a4093a1662a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Segment
-  image: {fileID: 283552459183659786}

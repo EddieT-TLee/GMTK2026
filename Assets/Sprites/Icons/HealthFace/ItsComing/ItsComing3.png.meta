@@ -1,43 +1,10 @@
 fileFormatVersion: 2
-guid: a1a366512c576824ebb0488634b03ca6
+guid: 1b44426569f815e46acba77aef94c07c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8007345764089635904
-    second: shower_head_0
-  - first:
-      213: 6378674411948754556
-    second: shower_head_1
-  - first:
-      213: -4818508226629972521
-    second: shower_head_2
-  - first:
-      213: -5393165795788072461
-    second: shower_head_3
-  - first:
-      213: -7034922104770393028
-    second: shower_head_4
-  - first:
-      213: 4243997018568525423
-    second: shower_head_5
-  - first:
-      213: 7143852970418266143
-    second: shower_head_6
-  - first:
-      213: 315217243029957143
-    second: shower_head_7
-  - first:
-      213: -4962768096370570137
-    second: shower_head_8
-  - first:
-      213: -5782637843716945102
-    second: shower_head_9
-  - first:
-      213: 5681099475172411589
-    second: shower_head_10
-  - first:
-      213: 1698894409103797661
-    second: shower_head_11
+      213: 4444254191173981826
+    second: ItsComing3_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -146,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: shower_head
+      name: ItsComing3_0
       rect:
         serializedVersion: 2
-        x: 13
-        y: 13
-        width: 74
-        height: 85
+        x: 0
+        y: 21
+        width: 257
+        height: 253
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7dd4c642c48312db0800000000000000
-      internalID: -4818508226629972521
+      spriteID: 2865774e3a92dad30800000000000000
+      internalID: 4444254191173981826
       vertices: []
       indices: 
       edges: []
@@ -171,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: f53c1bb7a82c4ef41b2d749129e9a3a9
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -181,18 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      shower_head: -4818508226629972521
-      shower_head_0: 8007345764089635904
-      shower_head_1: 6378674411948754556
-      shower_head_10: 5681099475172411589
-      shower_head_11: 1698894409103797661
-      shower_head_3: -5393165795788072461
-      shower_head_4: -7034922104770393028
-      shower_head_5: 4243997018568525423
-      shower_head_6: 7143852970418266143
-      shower_head_7: 315217243029957143
-      shower_head_8: -4962768096370570137
-      shower_head_9: -5782637843716945102
+      ItsComing3_0: 4444254191173981826
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
