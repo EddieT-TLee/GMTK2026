@@ -35,12 +35,7 @@ public class Stats : MonoBehaviour
     public event Action<float, float> OnHygieneChanged;
     public event Action OnDeath;
 
-    public enum Background
-    {
-        Hospital,
-        Garden,
-        FastFood
-    }
+    public enum Background { Hospital, Garden, FastFood }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -68,10 +63,10 @@ public class Stats : MonoBehaviour
         OnHappinessChanged?.Invoke(CurrentHappiness, MaxHappiness);
         OnHygieneChanged?.Invoke(CurrentHygiene, MaxHygiene);
 
-        float healthDecay =
-            HungerWeight * (MaxHunger - CurrentHunger) +
-            HappinessWeight * (MaxHappiness - CurrentHappiness) +
-            HygieneWeight * (MaxHygiene - CurrentHygiene);
+        float healthDecay = MaxHealth *
+            HungerWeight * (1 - HungerPercentage) +
+            HappinessWeight * (1 - HappinessPercentage) +
+            HygieneWeight * (1 - HygienePercentage);
 
         CurrentHealth = Mathf.Clamp(CurrentHealth - healthDecay * Time.deltaTime, 0, MaxHealth);
         OnHealthChanged?.Invoke(CurrentHealth, MaxHealth);

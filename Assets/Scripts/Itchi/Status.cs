@@ -1,105 +1,169 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Status : MonoBehaviour
 {
+    [Header("Reference to Stats component")]
     [SerializeField] private Stats stats;
-    [SerializeField] [Range(0f, 1f)] private float wantThreshold = 0.25f;
 
-    public enum ItchiWant
+    [Header("Reference to thought bubbles")]
+    [SerializeField] private WantDisplay hungerDisplay;
+    [SerializeField] private WantDisplay happinessDisplay;
+    [SerializeField] private WantDisplay hygieneDisplay;
+
+    [SerializeField] private List<WantDisplayData> wantSprites;
+    
+    private Dictionary<string, Sprite> wantSpriteDictionary = new();
+
+    [Header("Want Parameters")]
+    [SerializeField] [Range(0f, 1f)] private float wantThreshold = 0.90f;
+    [SerializeField] [Range(0f, 1f)] private float wantSatisfyIncrease = 0.1f;
+    [SerializeField] private float minWantTime = 0.2f;
+    [SerializeField] private float maxWantTime = 1.0f;
+
+    public enum HungerWant
     {
         Satisfied,
-        Comb,
-        Sponge,
         Apple,
         ChickenNoodleSoup,
         Milk,
-        Pills,
+        Pills
+    }
+
+    public enum HappinessWant
+    {
+        Satisfied,
         Ball,
         CarrotOnAStick,
         Tamagotchi
     }
 
+    public enum HygieneWant
+    {
+        Satisfied,
+        Comb,
+        Sponge
+    }
+
     public enum ItchiStats
     {
         None,
-        Hygiene,
         Hunger,
         Happiness,
+        Hygiene
     }
 
-    public ItchiWant currentWant;
+    public HungerWant hungerWant;
+    public HappinessWant happinessWant;
+    public HygieneWant hygieneWant;
 
-    private static readonly List<ItchiWant> bathes = new() {
-        ItchiWant.Comb,
-        ItchiWant.Sponge
-    };
-
-    private static readonly List<ItchiWant> foods = new() {
-        ItchiWant.Apple,
-        ItchiWant.ChickenNoodleSoup,
-        ItchiWant.Milk,
-        ItchiWant.Pills,
-    };
-
-    private static readonly List<ItchiWant> games = new() {
-        ItchiWant.Ball,
-        ItchiWant.CarrotOnAStick,
-        ItchiWant.Tamagotchi
-    };
-
-    private void OnEnable()
+    private void Awake()
     {
-        stats.OnHungerChanged += HandleStatChanged;
-        stats.OnHappinessChanged += HandleStatChanged;
-        stats.OnHygieneChanged += HandleStatChanged;
-    }
-
-    private void OnDisable()
-    {
-        stats.OnHungerChanged -= HandleStatChanged;
-        stats.OnHappinessChanged -= HandleStatChanged;
-        stats.OnHygieneChanged -= HandleStatChanged;
-    }
-
-    public void SatisfyCurrentWant()
-    {
-        switch (currentWant)
+        foreach (WantDisplayData item in wantSprites)
         {
-            case ItchiWant.Satisfied:
+            if (!wantSpriteDictionary.ContainsKey(item.wantName))
+            {
+                wantSpriteDictionary.Add(item.wantName.ToLower(), item.sprite);
+            }
+        }
+
+        StartCoroutine(HandleHungerStat());
+        StartCoroutine(HandleHappinessStat());
+        StartCoroutine(HandleHygieneStat());
+    }
+
+    public void SatisfyWant(ItchiStats stat)
+    {
+        switch (stat)
+        {
+            case ItchiStats.None:
                 break;
 
-            case ItchiWant.Comb:
-            case ItchiWant.Sponge:
-                stats.AddHygiene(0.10f);
+            case ItchiStats.Hunger:
+                stats.AddHunger(wantSatisfyIncrease);
+                hungerWant = HungerWant.Satisfied;
+                hungerDisplay.Hide();
                 break;
 
-            case ItchiWant.Apple:
-            case ItchiWant.ChickenNoodleSoup:
-            case ItchiWant.Milk:
-            case ItchiWant.Pills:
-                stats.AddHunger(0.10f);
+            case ItchiStats.Happiness:
+                stats.AddHappiness(wantSatisfyIncrease);
+                happinessWant = HappinessWant.Satisfied;
+                happinessDisplay.Hide();
                 break;
 
-            case ItchiWant.Ball:
-            case ItchiWant.CarrotOnAStick:
-            case ItchiWant.Tamagotchi:
-                stats.AddHappiness(0.10f);
+            case ItchiStats.Hygiene:
+                stats.AddHygiene(wantSatisfyIncrease);
+                hygieneWant = HygieneWant.Satisfied;
+                hygieneDisplay.Hide();
                 break;
         }
-        
-        currentWant = ItchiWant.Satisfied;
     }
 
-    private void HandleStatChanged(float current, float max)
+    private T GetRandomWantEnum<T>() where T : Enum
     {
-        if (currentWant != ItchiWant.Satisfied)
-            return;
+        Array values = Enum.GetValues(typeof(T));
+        return (T)values.GetValue(UnityEngine.Random.Range(1, values.Length));
+    }
 
-        ItchiStats neededStat = GetNeededStat();
+    private static float Map(float value, float min1, float max1, float min2, float max2)
+    {
+        return (value - min1) * (max2 - min2) / (max1 - min1) + min2;
+    }
 
-        if (neededStat != ItchiStats.None)
-            GenerateWant(neededStat);
+    private IEnumerator HandleHungerStat()
+    {
+        while (true)
+        {
+            if (stats.HungerPercentage <= wantThreshold && hungerWant == HungerWant.Satisfied)
+            {
+                float waitTime = Map(stats.HungerPercentage, 0, wantThreshold, minWantTime, maxWantTime);
+
+                yield return new WaitForSeconds(waitTime);
+                GenerateWant(ItchiStats.Hunger);
+                hungerDisplay.Show();
+            }
+
+            yield return null;
+        }
+    }
+
+    private IEnumerator HandleHappinessStat()
+    {
+        while (true)
+        {
+            if (stats.HappinessPercentage <= wantThreshold && happinessWant == HappinessWant.Satisfied)
+            {
+                float waitTime = Map(stats.HappinessPercentage, 0, wantThreshold, minWantTime, maxWantTime);
+
+                yield return new WaitForSeconds(waitTime);
+                GenerateWant(ItchiStats.Happiness);
+                happinessDisplay.Show();
+            }
+
+            yield return null;
+        }
+    }
+
+    private IEnumerator HandleHygieneStat()
+    {
+        while (true)
+        {
+            if (stats.HygienePercentage <= wantThreshold && hygieneWant != HygieneWant.Comb)
+            {
+                float waitTime = Map(stats.HygienePercentage, 0, wantThreshold, minWantTime, maxWantTime);
+
+                yield return new WaitForSeconds(waitTime);
+                GenerateWant(ItchiStats.Hygiene);
+                if (hygieneWant == HygieneWant.Comb)
+                {
+                    hygieneDisplay.Show();
+                }
+            }
+
+            yield return null;
+        }
     }
 
     private void GenerateWant(ItchiStats stat)
@@ -108,38 +172,28 @@ public class Status : MonoBehaviour
         {
             case ItchiStats.None:
                 break;
-            case ItchiStats.Hygiene:
-                currentWant = bathes[Random.Range(0, bathes.Count)];
-                break;
             case ItchiStats.Hunger:
-                currentWant = foods[Random.Range(0, foods.Count)];
+                hungerWant = GetRandomWantEnum<HungerWant>();
+                hungerDisplay.ChangeSprite(wantSpriteDictionary[hungerWant.ToString().ToLower()]);
                 break;
             case ItchiStats.Happiness:
-                currentWant = games[Random.Range(0, games.Count)];
+                happinessWant = GetRandomWantEnum<HappinessWant>();
+                happinessDisplay.ChangeSprite(wantSpriteDictionary[happinessWant.ToString().ToLower()]);
+                break;
+            case ItchiStats.Hygiene:
+                hygieneWant = GetRandomWantEnum<HygieneWant>();
+                if (hygieneWant == HygieneWant.Comb)
+                {
+                    hygieneDisplay.ChangeSprite(wantSpriteDictionary["comb"]);
+                }
                 break;
         }
     }
-
-    private ItchiStats GetNeededStat()
-    {
-        float hunger = stats.HungerPercentage;
-        float happiness = stats.HappinessPercentage;
-        float hygiene = stats.HygienePercentage;
-
-        float mostWant = Mathf.Min(hunger, happiness, hygiene);
-
-        if (mostWant >= wantThreshold) return ItchiStats.None;
-
-        if (hunger == mostWant)
-        {
-            return ItchiStats.Hunger;
-        }
-
-        if (happiness == mostWant)
-        {
-            return ItchiStats.Happiness;
-        }
-        
-        return ItchiStats.Hygiene;
-    }
 }
+
+[Serializable]
+public struct WantDisplayData
+{
+    public string wantName;
+    public Sprite sprite;
+} 
