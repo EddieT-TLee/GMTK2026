@@ -19,6 +19,7 @@ public class Wander : MonoBehaviour
     private Camera cam;
     private bool dirty;
     private Animator animator;
+    private bool isChasing;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -35,16 +36,34 @@ public class Wander : MonoBehaviour
 
     void Update()
     {
-        // Choosing a random position to wander to
+        Draggable activeDraggable = ToyManager.CurrentDraggable;
+        // Will probably add some for things to this for toys
+        bool shouldChase = activeDraggable != null && activeDraggable.CompareTag("Food");
+ 
+        if (shouldChase)
+        {
+            // Keeps chasing the object if it has correct tag
+            wanderTarget = new Vector3(activeDraggable.transform.position.x, transform.position.y, transform.position.z);
+            isChasing = true;
+        }
+        else if (isChasing)
+        {
+            // Food was just picked up/despawned - go back to normal wandering
+            isChasing = false;
+            PickTargetPosition();
+            WalkTimer = 0;
+        }
+ 
         transform.position = Vector3.MoveTowards(transform.position, wanderTarget, speed * Time.deltaTime);
-
-        if (WalkTimer > WalkTimeInterval)
+ 
+        // only wander if not chasing
+        if (!isChasing && WalkTimer > WalkTimeInterval)
         {
             WalkTimeInterval = Random.Range(3, maxWaitTime);
             PickTargetPosition();
             WalkTimer = 0;
         }
-
+ 
         WalkTimer += Time.deltaTime;
         
         UpdateAnimator();

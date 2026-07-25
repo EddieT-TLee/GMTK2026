@@ -31,18 +31,23 @@ public class Toy : MonoBehaviour
         if (currentDraggable == null)
         {
             currentDraggable = Instantiate(draggablePrefab);
-
+            ToyManager.SetCurrentDraggable(currentDraggable);
+ 
             ToyManager.ToySelected(this);
         }
     }
-
+ 
     public void DespawnDraggable()
     {
         if (currentDraggable != null)
         {
+            ToyManager.ClearCurrentDraggable(currentDraggable);
             Destroy(currentDraggable.gameObject);
+            currentDraggable = null;
         }
     }
+ 
+ 
 
 
 }
