@@ -4,31 +4,21 @@ using UnityEngine.EventSystems;
 
 public class Draggable : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    [SerializeField] private RectTransform rectTransform;
-
-    private Canvas canvas;
-    private RectTransform canvasRectTransform;
-
     public event Action<PointerEventData> PointerDown;
     public event Action<PointerEventData> BeginDrag;
     public event Action<PointerEventData> Drag;
     public event Action<PointerEventData> EndDrag;
 
-    private void Awake()
-    {
-        canvas = GetComponentInParent<Canvas>();
-        canvasRectTransform = canvas.GetComponent<RectTransform>();
-    }
-
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (RectTransformUtility.ScreenPointToLocalPointInRectangle(
-            canvasRectTransform,
-            eventData.position,
-            eventData.pressEventCamera,
-            out Vector2 localPoint))
+        if (Camera.main != null)
         {
-            rectTransform.anchoredPosition = localPoint;
+            float screenZ = Camera.main.WorldToScreenPoint(transform.position).z;
+
+            Vector3 screenPos = new Vector3(eventData.position.x, eventData.position.y, screenZ);
+            Vector3 worldPos = Camera.main.ScreenToWorldPoint(screenPos);
+
+            transform.position = worldPos;
         }
 
         PointerDown?.Invoke(eventData);
@@ -41,7 +31,16 @@ public class Draggable : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, 
 
     public void OnDrag(PointerEventData eventData)
     {
-        rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+        if (Camera.main != null)
+        {
+            float screenZ = Camera.main.WorldToScreenPoint(transform.position).z;
+
+            Vector3 screenPos = new Vector3(eventData.position.x, eventData.position.y, screenZ);
+            Vector3 worldPos = Camera.main.ScreenToWorldPoint(screenPos);
+
+            transform.position = worldPos;
+        }
+
         Drag?.Invoke(eventData);
     }
 
