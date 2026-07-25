@@ -106,14 +106,14 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5779226462636675529, guid: 6b9bd373ff2a43f438b9039e3653c45e, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2494440223802039981}
+      addedObject: {fileID: -9053450765989650988}
   m_SourcePrefab: {fileID: 100100000, guid: 6b9bd373ff2a43f438b9039e3653c45e, type: 3}
 --- !u!1 &6913515275929777648 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5779226462636675529, guid: 6b9bd373ff2a43f438b9039e3653c45e, type: 3}
   m_PrefabInstance: {fileID: 1135560604815778873}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2494440223802039981
+--- !u!114 &-9053450765989650988
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -122,11 +122,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 6913515275929777648}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b92a46268310a0046a6af1003a24a091, type: 3}
+  m_Script: {fileID: 11500000, guid: d6a5cff3e4108dc47a4a5b40f093c6c1, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Brush
-  brushZoneTag: Suds
-  requiredBrushTime: 1
-  minStrokeDistance: 0.1
-  reverseDotThreshold: -0.2
-  brushingWeight: 50
+  m_EditorClassIdentifier: '::'

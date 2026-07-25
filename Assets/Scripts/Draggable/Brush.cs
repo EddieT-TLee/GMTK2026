@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -21,6 +22,8 @@ public class Brush : MonoBehaviour
     private Vector3 lastPosition;
     private Vector3 lastDirection;
     private float brushedTime;
+    
+    public event Action BrushingCompleted;
     
 
     private void Awake()
@@ -70,6 +73,8 @@ public class Brush : MonoBehaviour
                 ToyManager.ClearCurrentDraggable(draggable);
                 Destroy(gameObject);
                 brushCompleted = true;
+
+                BrushingCompleted?.Invoke();
             }
         }
 

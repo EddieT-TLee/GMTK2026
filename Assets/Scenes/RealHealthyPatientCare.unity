@@ -3451,7 +3451,7 @@ PrefabInstance:
     - target: {fileID: 6610582425366165022, guid: 27692aa09a39dd044b692b49f67ed776, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -7832214784768987486, guid: c05da188822192748865b725c011586e, type: 3}
+      objectReference: {fileID: -2475691863355229501, guid: 54d7bcce0ad14f6478d5ac943736a0ab, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 1336000992200821043, guid: 27692aa09a39dd044b692b49f67ed776, type: 3}
@@ -4175,6 +4175,20 @@ MonoBehaviour:
   draggablePrefab: {fileID: 1837847401143880901, guid: fd189e395fe0f4942ad490d93fada329, type: 3}
   popupMenu: {fileID: 1786563611}
   spawnButton: {fileID: 940070480}
+--- !u!114 &940070487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 940070478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 533cac00e1e849b49b49e6505025aabe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  itchi: {fileID: 1516951273}
+  sudsPrefab: {fileID: 3120369493060791163, guid: a2a1145a79d0e794980add120782d568, type: 3}
 --- !u!1001 &941152031
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7964,6 +7978,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1452726783}
   m_CullTransparentMesh: 1
+--- !u!61 &1516951273 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 4261490182555995225, guid: a13acca91a7f3e141b13af3475ec4ce1, type: 3}
+  m_PrefabInstance: {fileID: 5254314392266353116}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1517624978
 GameObject:
   m_ObjectHideFlags: 0
@@ -10370,6 +10389,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4987436469367833703, guid: 27692aa09a39dd044b692b49f67ed776, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4987436469367833703, guid: 27692aa09a39dd044b692b49f67ed776, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4987436469367833703, guid: 27692aa09a39dd044b692b49f67ed776, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 940070487}
+    - target: {fileID: 4987436469367833703, guid: 27692aa09a39dd044b692b49f67ed776, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4987436469367833703, guid: 27692aa09a39dd044b692b49f67ed776, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AttachSudsToItchi
+      objectReference: {fileID: 0}
+    - target: {fileID: 4987436469367833703, guid: 27692aa09a39dd044b692b49f67ed776, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SpawnSuds, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4987436469367833703, guid: 27692aa09a39dd044b692b49f67ed776, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5425351461567026404, guid: 27692aa09a39dd044b692b49f67ed776, type: 3}
       propertyPath: m_Name
       value: Bath Menu
@@ -10392,6 +10439,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5924882225023359800, guid: 27692aa09a39dd044b692b49f67ed776, type: 3}
       insertIndex: -1
       addedObject: {fileID: 940070483}
+    - targetCorrespondingSourceObject: {fileID: 5924882225023359800, guid: 27692aa09a39dd044b692b49f67ed776, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 940070487}
   m_SourcePrefab: {fileID: 100100000, guid: 27692aa09a39dd044b692b49f67ed776, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

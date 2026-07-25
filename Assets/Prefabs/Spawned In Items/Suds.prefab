@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8673950915485891938}
   - component: {fileID: 6954438634288389384}
   - component: {fileID: 3797409355673363262}
+  - component: {fileID: 3751144692076815123}
   m_Layer: 0
   m_Name: Suds
   m_TagString: Suds
@@ -166,3 +167,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &3751144692076815123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3120369493060791163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c34e35d54a6e2044f88e670f987fec29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
