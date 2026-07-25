@@ -4,22 +4,31 @@ using UnityEngine.EventSystems;
 
 public class Draggable : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
+    private Camera cam;
+    private Vector3 mouseOffset;
+
     public event Action<PointerEventData> PointerDown;
     public event Action<PointerEventData> BeginDrag;
     public event Action<PointerEventData> Drag;
     public event Action<PointerEventData> EndDrag;
 
+    private void Awake()
+    {
+        cam = Camera.main;
+    }
+
+    private Vector3 GetMouseWorldPosition(Vector2 screenPosition)
+    {
+        float screenZ = cam.WorldToScreenPoint(transform.position).z;
+        Vector3 world = cam.ScreenToWorldPoint(new Vector3(screenPosition.x, screenPosition.y, screenZ));
+        world.z = transform.position.z;
+
+        return world;
+    }
+
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (Camera.main != null)
-        {
-            float screenZ = Camera.main.WorldToScreenPoint(transform.position).z;
-
-            Vector3 screenPos = new Vector3(eventData.position.x, eventData.position.y, screenZ);
-            Vector3 worldPos = Camera.main.ScreenToWorldPoint(screenPos);
-
-            transform.position = worldPos;
-        }
+        mouseOffset = transform.position - GetMouseWorldPosition(eventData.position);
 
         PointerDown?.Invoke(eventData);
     }
@@ -31,15 +40,7 @@ public class Draggable : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, 
 
     public void OnDrag(PointerEventData eventData)
     {
-        if (Camera.main != null)
-        {
-            float screenZ = Camera.main.WorldToScreenPoint(transform.position).z;
-
-            Vector3 screenPos = new Vector3(eventData.position.x, eventData.position.y, screenZ);
-            Vector3 worldPos = Camera.main.ScreenToWorldPoint(screenPos);
-
-            transform.position = worldPos;
-        }
+        transform.position = GetMouseWorldPosition(eventData.position) + mouseOffset;
 
         Drag?.Invoke(eventData);
     }
