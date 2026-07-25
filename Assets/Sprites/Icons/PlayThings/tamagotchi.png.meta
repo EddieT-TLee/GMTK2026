@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: 7d581dd9cfdcde649a6a20bd52173b30
+guid: 91dbf096ff361bc4a901f0103eeee1ce
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2950869812727453837
-    second: carrot_0
+      213: -442219610716240219
+    second: tamagotchi_0
+  - first:
+      213: 5025835020481767048
+    second: tamagotchi_1
+  - first:
+      213: 5022003190396300192
+    second: tamagotchi_2
+  - first:
+      213: -5085253924281105501
+    second: tamagotchi_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +122,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: carrot_0
+      name: tamagotchi_0
       rect:
         serializedVersion: 2
-        x: 11
-        y: 11
-        width: 61
-        height: 73
+        x: 8
+        y: 67
+        width: 7
+        height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +137,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d881b06d57893f820800000000000000
-      internalID: 2950869812727453837
+      spriteID: 5a60c866b9becd9f0800000000000000
+      internalID: -442219610716240219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tamagotchi_1
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 74
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 886a887b25a5fb540800000000000000
+      internalID: 5025835020481767048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tamagotchi_2
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 10
+        width: 66
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ab23704b4db1b540800000000000000
+      internalID: 5022003190396300192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tamagotchi_3
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 59
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a3409aaf7c8d69b0800000000000000
+      internalID: -5085253924281105501
       vertices: []
       indices: 
       edges: []
@@ -148,7 +223,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      carrot_0: 2950869812727453837
+      tamagotchi_0: -442219610716240219
+      tamagotchi_1: 5025835020481767048
+      tamagotchi_2: 5022003190396300192
+      tamagotchi_3: -5085253924281105501
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

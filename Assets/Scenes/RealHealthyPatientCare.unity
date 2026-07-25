@@ -4144,6 +4144,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 911524458}
   m_CullTransparentMesh: 1
+--- !u!1 &940070478 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5924882225023359800, guid: 27692aa09a39dd044b692b49f67ed776, type: 3}
+  m_PrefabInstance: {fileID: 7047940939453631777}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &940070480 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4987436469367833703, guid: 27692aa09a39dd044b692b49f67ed776, type: 3}
+  m_PrefabInstance: {fileID: 7047940939453631777}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 940070478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+--- !u!114 &940070483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 940070478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfdf4c565f4ad06428273a7b2fd8589f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Toy
+  draggablePrefab: {fileID: 1837847401143880901, guid: fd189e395fe0f4942ad490d93fada329, type: 3}
+  popupMenu: {fileID: 1786563611}
+  spawnButton: {fileID: 940070480}
 --- !u!1001 &941152031
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8447,7 +8478,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e0c99567fc045347ba8351fccb5a34b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  itchi: {fileID: 0}
+  itchi: {fileID: 984948538}
   HappinessBar: {fileID: 1448666293}
   HygieneBar: {fileID: 1433488467}
   HungerBar: {fileID: 333832969}
@@ -10358,6 +10389,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6358318304495825378, guid: 27692aa09a39dd044b692b49f67ed776, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1113444114}
+    - targetCorrespondingSourceObject: {fileID: 5924882225023359800, guid: 27692aa09a39dd044b692b49f67ed776, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 940070483}
   m_SourcePrefab: {fileID: 100100000, guid: 27692aa09a39dd044b692b49f67ed776, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
