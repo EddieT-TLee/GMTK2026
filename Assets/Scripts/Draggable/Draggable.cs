@@ -2,15 +2,17 @@ using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Draggable : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class Draggable : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerUpHandler
 {
     private Camera cam;
     private Vector3 mouseOffset;
 
+    public event Action<PointerEventData> PointerUp;
     public event Action<PointerEventData> PointerDown;
     public event Action<PointerEventData> BeginDrag;
     public event Action<PointerEventData> Drag;
     public event Action<PointerEventData> EndDrag;
+    
 
     private void Awake()
     {
@@ -26,6 +28,11 @@ public class Draggable : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, 
         return world;
     }
 
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        PointerUp?.Invoke(eventData);
+    }
+    
     public void OnPointerDown(PointerEventData eventData)
     {
         mouseOffset = transform.position - GetMouseWorldPosition(eventData.position);
@@ -49,4 +56,5 @@ public class Draggable : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, 
     {
         EndDrag?.Invoke(eventData);
     }
+
 }
