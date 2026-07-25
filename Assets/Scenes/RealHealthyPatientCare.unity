@@ -4189,6 +4189,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   itchi: {fileID: 1516951273}
   sudsPrefab: {fileID: 3120369493060791163, guid: a2a1145a79d0e794980add120782d568, type: 3}
+  MinSudsAmount: 10
+  MaxSudsAmount: 40
 --- !u!1001 &941152031
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10244,6 +10246,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8711876321785848059, guid: a13acca91a7f3e141b13af3475ec4ce1, type: 3}
+      propertyPath: poopPrefab
+      value: 
+      objectReference: {fileID: 1747892491687069544, guid: e8a9ca942fa6f244ba1d2ff52a6d5e31, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10272,6 +10278,34 @@ PrefabInstance:
     - target: {fileID: 466412780542000889, guid: 27692aa09a39dd044b692b49f67ed776, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1807329642604127525, guid: 27692aa09a39dd044b692b49f67ed776, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1807329642604127525, guid: 27692aa09a39dd044b692b49f67ed776, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1807329642604127525, guid: 27692aa09a39dd044b692b49f67ed776, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7047940939453631779}
+    - target: {fileID: 1807329642604127525, guid: 27692aa09a39dd044b692b49f67ed776, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1807329642604127525, guid: 27692aa09a39dd044b692b49f67ed776, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StartSweep
+      objectReference: {fileID: 0}
+    - target: {fileID: 1807329642604127525, guid: 27692aa09a39dd044b692b49f67ed776, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Sweep, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1807329642604127525, guid: 27692aa09a39dd044b692b49f67ed776, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2991860496581571540, guid: 27692aa09a39dd044b692b49f67ed776, type: 3}
       propertyPath: m_AnchorMax.y
@@ -10425,6 +10459,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sponge
       objectReference: {fileID: 0}
+    - target: {fileID: 7528042957360284530, guid: 27692aa09a39dd044b692b49f67ed776, type: 3}
+      propertyPath: m_text
+      value: Mop Up
+      objectReference: {fileID: 0}
     - target: {fileID: 7532731380019072222, guid: 27692aa09a39dd044b692b49f67ed776, type: 3}
       propertyPath: m_text
       value: Sponge
@@ -10436,6 +10474,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6358318304495825378, guid: 27692aa09a39dd044b692b49f67ed776, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1113444114}
+    - targetCorrespondingSourceObject: {fileID: 6224864299734339801, guid: 27692aa09a39dd044b692b49f67ed776, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7047940939453631779}
     - targetCorrespondingSourceObject: {fileID: 5924882225023359800, guid: 27692aa09a39dd044b692b49f67ed776, type: 3}
       insertIndex: -1
       addedObject: {fileID: 940070483}
@@ -10443,6 +10484,27 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 940070487}
   m_SourcePrefab: {fileID: 100100000, guid: 27692aa09a39dd044b692b49f67ed776, type: 3}
+--- !u!1 &7047940939453631778 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6224864299734339801, guid: 27692aa09a39dd044b692b49f67ed776, type: 3}
+  m_PrefabInstance: {fileID: 7047940939453631777}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7047940939453631779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7047940939453631778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ffede552cb617d4d9ee84064a682523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Sweep
+  mopPrefab: {fileID: 8914717152473110823, guid: d77fb1021543cb94c9e130ac3fbbcda6, type: 3}
+  startPoint: {x: -10, y: 0}
+  endPoint: {x: 10, y: 0}
+  moveSpeed: 5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

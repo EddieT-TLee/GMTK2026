@@ -5,13 +5,10 @@ public class Wander : MonoBehaviour
 
     [SerializeField] private float speed = 2;
     [SerializeField] private float maxWaitTime = 5;
+    [SerializeField] private GameObject poopPrefab;
     
     [Header("Itchi Refrence for Events")] [SerializeField]
     private Stats itchi;
-
-    [Header("Itchi Needs Indicator")]
-    [SerializeField] private GameObject hungerIndicator;
-    [SerializeField] private GameObject happinessIndicator;
 
     private Vector3 wanderTarget;
     private float WalkTimer;
@@ -20,6 +17,8 @@ public class Wander : MonoBehaviour
     private bool dirty;
     private Animator animator;
     private bool isChasing;
+    private float poopTimer;
+    private float poopTimeInterval;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -28,10 +27,9 @@ public class Wander : MonoBehaviour
         PickTargetPosition();
         WalkTimeInterval = Random.Range(3, maxWaitTime);
         animator = GetComponent<Animator>();
-        
-        // Set Indicator inactive by default
-        hungerIndicator.SetActive(false);
-        happinessIndicator.SetActive(false);
+
+        poopTimeInterval = Random.Range(5, 10);
+
     }
 
     void Update()
@@ -66,6 +64,16 @@ public class Wander : MonoBehaviour
  
         WalkTimer += Time.deltaTime;
         
+        // Poop interval
+        if (poopTimer > poopTimeInterval)
+        {
+            Instantiate(poopPrefab, new Vector3(transform.position.x, -1.3f, 0), transform.rotation);
+            poopTimeInterval = Random.Range(5, 10);
+            poopTimer = 0;
+        }
+        
+        poopTimer += Time.deltaTime;
+        
         UpdateAnimator();
     }
     
@@ -77,8 +85,6 @@ public class Wander : MonoBehaviour
             return;
         }
 
-        itchi.OnHappinessChanged += SetHappinessIndicator;
-        itchi.OnHungerChanged += SetHungerIndicator;
         itchi.OnHygieneChanged += SetHygieneStatus;
     }
 
@@ -90,8 +96,6 @@ public class Wander : MonoBehaviour
             return;
         }
 
-        itchi.OnHappinessChanged -= SetHappinessIndicator;
-        itchi.OnHungerChanged -= SetHungerIndicator;
         itchi.OnHygieneChanged -= SetHygieneStatus;
     }
 
@@ -127,10 +131,6 @@ public class Wander : MonoBehaviour
         // Debug.Log(randomX);
     }
     
-    private void SetHappinessIndicator(float current, float max) => happinessIndicator.SetActive(current / max < 0.25);
-   
-    private void SetHungerIndicator(float current, float max) => hungerIndicator.SetActive(current / max < 0.25); 
-
     private void SetHygieneStatus(float current, float max) => dirty = (current / max < 0.25);
     
     
