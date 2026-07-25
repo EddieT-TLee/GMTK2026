@@ -12,6 +12,7 @@ public class Toy : MonoBehaviour
     private void Awake()
     {
         ToyManager.toys.Add(this);
+        
     }
 
     private void OnEnable()
@@ -30,8 +31,11 @@ public class Toy : MonoBehaviour
     {
         if (currentDraggable == null)
         {
-            currentDraggable = Instantiate(draggablePrefab);
+            currentDraggable = Instantiate(draggablePrefab, new Vector3(-3, 1, 0) , Quaternion.identity);
+            currentDraggable.GetComponent<SpriteRenderer>().sortingOrder = 99; // LAzy way to render in front of everything
+            
             ToyManager.SetCurrentDraggable(currentDraggable);
+            
  
             ToyManager.ToySelected(this);
         }
@@ -47,7 +51,4 @@ public class Toy : MonoBehaviour
         }
     }
  
- 
-
-
 }

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 5454e187c620df448accf23d57a80543
+guid: 7669d6dc766b51c46ba07df622d89197
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7732338902347848336
-    second: controller_icons_0
+      213: -1122633250157586899
+    second: itchi_play_0011_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: controller_icons_0
+      name: itchi_play_0011_0
       rect:
         serializedVersion: 2
         x: 1
-        y: 15
-        width: 99
-        height: 74
+        y: 1
+        width: 98
+        height: 94
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0756f9a6cb631b490800000000000000
-      internalID: -7732338902347848336
+      spriteID: d269057c10b9b60f0800000000000000
+      internalID: -1122633250157586899
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      controller_icons_0: -7732338902347848336
+      itchi_play_0011_0: -1122633250157586899
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

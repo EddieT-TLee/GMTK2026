@@ -6,10 +6,10 @@ public class ToyManager : MonoBehaviour
 {
     public static List<Toy> toys = new List<Toy>();
 
-    // The Draggable that is currently spawned/active in the scene, if any.
+    // The Draggable that is currently spawned/active in the scene
     public static Draggable CurrentDraggable { get; private set; }
 
-    // Fired when a toy is spawned / despawned so other systems (e.g. Wander) can react.
+    // Fired when a toy is spawned / despawned so other systems 
     public static event Action<Draggable> DraggableSpawned;
     public static event Action DraggableDespawned;
 

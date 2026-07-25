@@ -92,7 +92,8 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Food
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5375634229084147368, guid: 6b9bd373ff2a43f438b9039e3653c45e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -102,6 +103,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5779226462636675529, guid: 6b9bd373ff2a43f438b9039e3653c45e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5841468841759918365}
+    - targetCorrespondingSourceObject: {fileID: 5779226462636675529, guid: 6b9bd373ff2a43f438b9039e3653c45e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8488491516807046831}
   m_SourcePrefab: {fileID: 100100000, guid: 6b9bd373ff2a43f438b9039e3653c45e, type: 3}
 --- !u!114 &274691503359637623 stripped
 MonoBehaviour:
@@ -159,3 +163,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Food
   food: {fileID: 274691503359637623}
+--- !u!58 &8488491516807046831
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5025739614553899330}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: -0.0025309802, y: 0}
+  m_Radius: 0.16413566
