@@ -23,12 +23,24 @@ public class Stats : MonoBehaviour
     [SerializeField] private float HappinessWeight;
     [SerializeField] private float HygieneWeight;
 
+    public float HealthPercentage => CurrentHealth / MaxHealth;
+    public float HungerPercentage => CurrentHunger / MaxHunger;
+    public float HappinessPercentage => CurrentHappiness / MaxHappiness;
+    public float HygienePercentage => CurrentHygiene / MaxHygiene;
+
     // Event Listeners for other scripts
     public event Action<float, float> OnHealthChanged;
     public event Action<float, float> OnHungerChanged;
     public event Action<float, float> OnHappinessChanged;
     public event Action<float, float> OnHygieneChanged;
     public event Action OnDeath;
+
+    public enum Background
+    {
+        Hospital,
+        Garden,
+        FastFood
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -67,6 +79,49 @@ public class Stats : MonoBehaviour
         if (CurrentHealth == 0)
         {
             OnDeath?.Invoke();
+        }
+    }
+
+    public void AddHunger(float percentage)
+    {
+        percentage = Mathf.Clamp01(percentage);
+        CurrentHunger = Mathf.Clamp(CurrentHunger + percentage * MaxHunger, 0, MaxHunger);
+        OnHungerChanged?.Invoke(CurrentHunger, MaxHunger);
+    }
+
+    public void AddHappiness(float percentage)
+    {
+        percentage = Mathf.Clamp01(percentage);
+        CurrentHappiness = Mathf.Clamp(CurrentHappiness + percentage * MaxHunger, 0, MaxHappiness);
+        OnHappinessChanged?.Invoke(CurrentHappiness, MaxHappiness);
+    }
+
+    public void AddHygiene(float percentage)
+    {
+        percentage = Mathf.Clamp01(percentage);
+        CurrentHygiene = Mathf.Clamp(CurrentHygiene + percentage * MaxHunger, 0, MaxHygiene);
+        OnHygieneChanged?.Invoke(CurrentHygiene, MaxHygiene);
+    }
+
+    public void ChangeDecayRates(Background bg)
+    {
+        switch (bg)
+        {
+            case Background.Hospital:
+                HungerDecayRate = 3;
+                HappinessDecayRate = 3;
+                HygieneDecayRate = 1;
+                break;
+            case Background.Garden:
+                HungerDecayRate = 3;
+                HappinessDecayRate = 1;
+                HygieneDecayRate = 3;
+                break;
+            case Background.FastFood:
+                HungerDecayRate = 1;
+                HappinessDecayRate = 3;
+                HygieneDecayRate = 3;
+                break;
         }
     }
 }

@@ -4632,6 +4632,7 @@ GameObject:
   - component: {fileID: 984948539}
   - component: {fileID: 984948540}
   - component: {fileID: 984948538}
+  - component: {fileID: 984948542}
   m_Layer: 0
   m_Name: Itchi
   m_TagString: Untagged
@@ -4826,6 +4827,21 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.32666665, y: 0.31333333}
   m_EdgeRadius: 0
+--- !u!114 &984948542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 984948535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 088ed6b8c75beda4b8283425d60b3ade, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Status
+  stats: {fileID: 984948538}
+  wantThreshold: 0.5
+  currentWant: 0
 --- !u!1 &984999921
 GameObject:
   m_ObjectHideFlags: 0
