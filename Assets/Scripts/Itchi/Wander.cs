@@ -1,28 +1,42 @@
+using System.Collections;
 using UnityEngine;
 
 public class Wander : MonoBehaviour
 {
-
     [SerializeField] private float speed = 2;
     [SerializeField] private float maxWaitTime = 5;
     [SerializeField] private GameObject poopPrefab;
     [SerializeField] private float eatTime = 2f;
     
-    [Header("Itchi Refrence for Events")] [SerializeField]
-    private Stats itchi;
+    [Header("Itchi Refrence for Events")]
+    [SerializeField] private Stats itchi;
+    [SerializeField] private Status status;
+
+    [Header("Thought bubble references to disable upon death")]
+    [SerializeField] private WantDisplay hungerDisplay;
+    [SerializeField] private WantDisplay happinessDisplay;
+    [SerializeField] private WantDisplay hygieneDisplay;
+
+    private Camera cam;
+    private Animator animator;
 
     private Vector3 wanderTarget;
     private float WalkTimer;
     private float WalkTimeInterval;
-    private Camera cam;
-    private bool dirty;
-    private Animator animator;
-    private bool isChasing;
+
     private float poopTimer;
     private float poopTimeInterval;
-    private bool IsEating;
+
     private float eatTimer;
-    
+
+    private bool gotFood;
+    private Status.HungerWant food = Status.HungerWant.Satisfied;
+
+    private bool isDirty;
+    private bool isDead;
+    private bool isChasing;
+    private bool isEating;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     { 
@@ -30,15 +44,19 @@ public class Wander : MonoBehaviour
         PickTargetPosition();
         WalkTimeInterval = Random.Range(3, maxWaitTime);
         animator = GetComponent<Animator>();
-
         poopTimeInterval = Random.Range(5, 10);
 
     }
-
+    
     void Update()
     {
+        if (!isDead && itchi.HealthPercentage <= 0)
+        {
+            isDead = true;
+            StartCoroutine(Death());
+        }
 
-        if (IsEating)
+        if (isEating)
         {
             eatTimer += Time.deltaTime;
             Debug.Log($"eatTimer: {eatTimer} / {eatTime}");
@@ -104,7 +122,7 @@ public class Wander : MonoBehaviour
         }
 
         itchi.OnHygieneChanged += SetHygieneStatus;
-        Food.foodAte += eatFood;
+        Food.foodAte += EatFood;
     }
 
     void OnDisable()
@@ -116,7 +134,7 @@ public class Wander : MonoBehaviour
         }
 
         itchi.OnHygieneChanged -= SetHygieneStatus;
-        Food.foodAte -= eatFood;
+        Food.foodAte -= EatFood;
     }
 
     private void UpdateAnimator()
@@ -124,13 +142,15 @@ public class Wander : MonoBehaviour
         if (animator == null) return;
         
         // Don't Walk if eating
-        if (IsEating)
+        if (gotFood && isEating)
         {
             animator.SetBool("IsWalking", false);
-            animator.SetBool("IsEating", IsEating);
-            animator.SetBool("IsDirty", dirty);
+            animator.SetBool("IsEating", isEating);
+            animator.SetBool("IsDirty", isDirty);
+            gotFood = false;
             return;
         }
+
         // Walking is true Ithci hasn't reached their target yet
         float deltaX = wanderTarget.x - transform.position.x;
         bool isWalking = Mathf.Abs(deltaX) > 0.01f;
@@ -142,8 +162,8 @@ public class Wander : MonoBehaviour
         }
 
         animator.SetBool("IsWalking", isWalking);
-        animator.SetBool("IsEating", IsEating);
-        animator.SetBool("IsDirty", dirty);
+        animator.SetBool("IsEating", isEating);
+        animator.SetBool("IsDirty", isDirty);
     }
     
     private void PickTargetPosition()
@@ -160,22 +180,60 @@ public class Wander : MonoBehaviour
         // Debug.Log(randomX);
     }
     
-    private void SetHygieneStatus(float current, float max) => dirty = (current / max < 0.25);
+    private void SetHygieneStatus(float current, float max) => isDirty = (current / max < 0.25);
 
-    private void eatFood()
+    private void EatFood(Status.HungerWant foodEaten)
     {
-        IsEating = true;
+        isEating = true;
         eatTimer = 0f;
         isChasing = false;
-    
+        gotFood = true;
+        food = foodEaten;
+
         Debug.Log("Started Eating");
     }
 
     private void StopEating()
     {
         Debug.Log("Stopped Eating");
-        IsEating = false;
+        isEating = false;
         eatTimer = 0f;
+
+        StartCoroutine(ProcessFood());
+    }
+
+    private IEnumerator Death()
+    {
+        if (isDirty)
+        {
+            animator.Play("Death");
+        } else
+        {
+            animator.Play("DirtyDeath");
+        }
+
+        hungerDisplay.Hide();
+        happinessDisplay.Hide();
+        hygieneDisplay.Hide();
+
+        yield return null;
+
+        PauseManager.Pause();
+    }
+
+    private IEnumerator ProcessFood()
+    {
+        if (!status.SatisfyWant(food))
+        {
+            animator.Play("HeadShake");
+
+            yield return null;
+
+            yield return new WaitUntil(() =>
+                animator.GetCurrentAnimatorStateInfo(0).IsName("HeadShake") &&
+                animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f
+            );
+        }
 
         PickTargetPosition();
         WalkTimer = 0;

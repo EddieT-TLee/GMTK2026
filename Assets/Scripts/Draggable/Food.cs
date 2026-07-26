@@ -6,12 +6,23 @@ public class Food : MonoBehaviour
 {
     [SerializeField] private Draggable food;
 
-    public static event Action foodAte;
+    [SerializeField] private bool apple = false;
+    [SerializeField] private bool milk = false;
+    [SerializeField] private bool chickenNoodleSoup = false;
+    [SerializeField] private bool pills = false;
+
+    public static event Action<Status.HungerWant> foodAte;
     private Rigidbody2D rb;
+    private Status status;
+    private Animator animator;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.bodyType = RigidbodyType2D.Static;    
+
+        status = GameObject.FindGameObjectWithTag("Itchi").GetComponent<Status>();
+        animator = status.gameObject.GetComponent<Animator>();
     }
 
     private void OnEnable()
@@ -41,7 +52,25 @@ public class Food : MonoBehaviour
         if (collision.tag == "Itchi")
         {
             Destroy(gameObject);
-            foodAte?.Invoke();
+            Status.HungerWant food = Status.HungerWant.Satisfied;
+
+            if (apple)
+            {
+                food = Status.HungerWant.Apple;
+            } else if (milk)
+            {
+                food = Status.HungerWant.Milk;
+            }
+            if (chickenNoodleSoup)
+            {
+                food = Status.HungerWant.ChickenNoodleSoup;
+            }
+            if (pills)
+            {
+                food = Status.HungerWant.Pills;
+            }
+
+            foodAte?.Invoke(food);
         }
     }
 }

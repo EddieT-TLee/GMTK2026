@@ -6,12 +6,18 @@ public class Ball : MonoBehaviour
     [SerializeField] private Draggable draggable;
     private Transform itchiHead;
     private Status status;
+    private Animator animator;
 
     [Header("Movement")]
     [SerializeField] private float launchSpeed = 8f;
     [SerializeField] private float bounceSpeed = 6f;
     [SerializeField] private float bounceAngle = 45f;
     [SerializeField] private float rotationSpeed = 1080f;
+
+    [Header("Want to satisfy")]
+    [SerializeField] private bool ballWant = false;
+    [SerializeField] private bool carrotWant = false;
+    [SerializeField] private bool tamagotchiWant = false;
 
     private enum State
     {
@@ -24,19 +30,13 @@ public class Ball : MonoBehaviour
     private Vector2 moveDirection;
     private float rotationDirection;
 
-    private void OnEnable()
-    {
-        draggable.PointerUp += LaunchBall;
-    }
-    private void OnDisable()
-    {
-        draggable.PointerUp += LaunchBall;
-    }
-
     private void Start()
     {
         itchiHead = GameObject.FindGameObjectWithTag("ItchiHead").GetComponent<Transform>();
         status = GameObject.FindGameObjectWithTag("Itchi").GetComponent<Status>();
+        animator = status.GetComponent<Animator>();
+        draggable.transform.position = transform.position;
+        LaunchBall();
     }
 
     private void Update()
@@ -53,7 +53,7 @@ public class Ball : MonoBehaviour
         }
     }
     
-    private void LaunchBall(PointerEventData eventData)
+    private void LaunchBall()
     {
         if (state != State.Idle)
             return;
@@ -78,7 +78,26 @@ public class Ball : MonoBehaviour
             rotationSpeed *= Mathf.Abs(moveDirection.x);
 
             state = State.Bouncing;
-            status.SatisfyWant(Status.HappinessWant.Ball);
+            animator.Play("Play");
+
+            if (ballWant)
+            {
+                status.SatisfyWant(Status.HappinessWant.Ball);
+                return;
+            }
+            
+            if (carrotWant)
+            {
+                status.SatisfyWant(Status.HappinessWant.CarrotOnAStick);
+                return;
+            }
+
+            if (tamagotchiWant)
+            {
+                status.SatisfyWant(Status.HappinessWant.Tamagotchi);
+                return;
+            }
+
         }
     }
 

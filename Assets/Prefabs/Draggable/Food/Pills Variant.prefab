@@ -20,6 +20,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
+    - target: {fileID: 5841468841759918365, guid: 0029f0b1926c86d43b0076004cbd9865, type: 3}
+      propertyPath: pills
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6730741357460327761, guid: 0029f0b1926c86d43b0076004cbd9865, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.75

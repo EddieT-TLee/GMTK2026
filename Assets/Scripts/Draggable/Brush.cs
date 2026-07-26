@@ -15,6 +15,7 @@ public class Brush : MonoBehaviour
     [SerializeField] private float brushingWeight = 50f;
 
     private Draggable draggable;
+    private Status status;
     private bool isDragging;
     private bool isInZone;
     private bool brushCompleted;
@@ -29,6 +30,11 @@ public class Brush : MonoBehaviour
     private void Awake()
     {
         draggable = GetComponent<Draggable>();
+    }
+
+    private void Start()
+    {
+        status = GameObject.FindGameObjectWithTag(brushZoneTag).GetComponent<Status>();
     }
 
     private void OnEnable()
@@ -74,6 +80,7 @@ public class Brush : MonoBehaviour
                 Destroy(gameObject);
                 brushCompleted = true;
 
+                status.SatisfyWant(Status.HygieneWant.Comb);
                 BrushingCompleted?.Invoke();
             }
         }

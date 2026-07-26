@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Status : MonoBehaviour
@@ -181,6 +180,10 @@ public class Status : MonoBehaviour
                 break;
             case ItchiStats.Hunger:
                 hungerWant = GetRandomWantEnum<HungerWant>();
+                while (hungerWant == HungerWant.Pills)
+                {
+                    hungerWant = GetRandomWantEnum<HungerWant>();
+                }
                 hungerDisplay.ChangeSprite(wantSpriteDictionary[hungerWant.ToString().ToLower()]);
                 break;
             case ItchiStats.Happiness:

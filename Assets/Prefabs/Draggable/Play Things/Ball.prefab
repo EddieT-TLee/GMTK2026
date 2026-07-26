@@ -141,7 +141,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Ball
   draggable: {fileID: 4225229063185730741}
-  launchSpeed: 8
-  bounceSpeed: 4
+  launchSpeed: 20
+  bounceSpeed: 10
   bounceAngle: 45
   rotationSpeed: 1080
+  ballWant: 1
+  carrotWant: 0
+  tamagotchiWant: 0

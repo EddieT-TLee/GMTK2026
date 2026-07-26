@@ -7,19 +7,19 @@ public class HealthBar : MonoBehaviour
     [SerializeField] private Stats stats;
     [SerializeField] private Image fill;
 
-    private void OnEnable()
-    {
-        stats.OnHealthChanged += UpdateHealthUI;
-    }
+    //private void OnEnable()
+    //{
+    //    stats.OnHealthChanged += UpdateHealthUI;
+    //}
 
-    private void OnDisable()
-    {
-        stats.OnHealthChanged -= UpdateHealthUI;
-    }
+    //private void OnDisable()
+    //{
+    //    stats.OnHealthChanged -= UpdateHealthUI;
+    //}
 
-    private void UpdateHealthUI(float current, float max)
+    private void Update()
     {
-        fill.fillAmount = current/max;
-        faceAnimator.SetFloat("Health Percentage", current/max, 0.1f, Time.deltaTime);
+        fill.fillAmount = stats.HealthPercentage;
+        faceAnimator.SetFloat("Health Percentage", stats.HealthPercentage, 0f, Time.unscaledDeltaTime);
     }
 }

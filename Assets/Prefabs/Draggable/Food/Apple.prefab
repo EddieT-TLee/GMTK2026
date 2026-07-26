@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Apple
       objectReference: {fileID: 0}
+    - target: {fileID: 5841468841759918365, guid: 0029f0b1926c86d43b0076004cbd9865, type: 3}
+      propertyPath: apple
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6730741357460327761, guid: 0029f0b1926c86d43b0076004cbd9865, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
