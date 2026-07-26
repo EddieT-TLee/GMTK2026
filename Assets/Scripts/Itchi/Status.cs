@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Status : MonoBehaviour
@@ -74,31 +75,37 @@ public class Status : MonoBehaviour
         StartCoroutine(HandleHygieneStat());
     }
 
-    public void SatisfyWant(ItchiStats stat)
+    public bool SatisfyWant(HungerWant want)
     {
-        switch (stat)
-        {
-            case ItchiStats.None:
-                break;
+        if (hungerWant != want)
+            return false;
 
-            case ItchiStats.Hunger:
-                stats.AddHunger(wantSatisfyIncrease);
-                hungerWant = HungerWant.Satisfied;
-                hungerDisplay.Hide();
-                break;
+        stats.AddHunger(wantSatisfyIncrease);
+        hungerWant = HungerWant.Satisfied;
+        hungerDisplay.Hide();
+        return true;
+    }
 
-            case ItchiStats.Happiness:
-                stats.AddHappiness(wantSatisfyIncrease);
-                happinessWant = HappinessWant.Satisfied;
-                happinessDisplay.Hide();
-                break;
+    public bool SatisfyWant(HappinessWant want)
+    {
+        if (happinessWant != want)
+            return false;
 
-            case ItchiStats.Hygiene:
-                stats.AddHygiene(wantSatisfyIncrease);
-                hygieneWant = HygieneWant.Satisfied;
-                hygieneDisplay.Hide();
-                break;
-        }
+        stats.AddHappiness(wantSatisfyIncrease);
+        happinessWant = HappinessWant.Satisfied;
+        happinessDisplay.Hide();
+        return true;
+    }
+
+    public bool SatisfyWant(HygieneWant want)
+    {
+        if (hygieneWant != want)
+            return false;
+
+        stats.AddHygiene(wantSatisfyIncrease);
+        hygieneWant = HygieneWant.Satisfied;
+        hygieneDisplay.Hide();
+        return true;
     }
 
     private T GetRandomWantEnum<T>() where T : Enum
@@ -189,6 +196,8 @@ public class Status : MonoBehaviour
                 break;
         }
     }
+
+
 }
 
 [Serializable]

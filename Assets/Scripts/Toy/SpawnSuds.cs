@@ -12,6 +12,8 @@ public class SpawnSuds : MonoBehaviour
     [SerializeField] private int MinSudsAmount = 10;
     [SerializeField] private int MaxSudsAmount = 40;
 
+    [SerializeField] private Status status;
+
     private readonly List<GameObject> activeSuds = new List<GameObject>();
 
     public event Action sudsCleared;
@@ -52,6 +54,7 @@ public class SpawnSuds : MonoBehaviour
 
         if (activeSuds.Count == 0)
         {
+            status.SatisfyWant(Status.HygieneWant.Sponge);
             sudsCleared?.Invoke();
         }
     }

@@ -317,9 +317,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   speed: 2
   maxWaitTime: 5
+  poopPrefab: {fileID: 0}
   itchi: {fileID: 2855569915654524236}
-  hungerIndicator: {fileID: 1023347787066449604}
-  happinessIndicator: {fileID: 8116538178387084904}
 --- !u!114 &2855569915654524236
 MonoBehaviour:
   m_ObjectHideFlags: 0
