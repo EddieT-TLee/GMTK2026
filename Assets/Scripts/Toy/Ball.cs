@@ -39,7 +39,7 @@ public class Ball : MonoBehaviour
         status = GameObject.FindGameObjectWithTag("Itchi").GetComponent<Status>();
     }
 
-private void Update()
+    private void Update()
     {
         switch (state)
         {

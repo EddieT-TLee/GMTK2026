@@ -505,7 +505,7 @@ GameObject:
   - component: {fileID: 4041442044327848990}
   m_Layer: 0
   m_Name: Itchi New
-  m_TagString: Untagged
+  m_TagString: Itchi
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -523,6 +523,7 @@ Transform:
   m_LocalScale: {x: 11, y: 11, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 8562586345146017971}
   - {fileID: 4224525671213175137}
   - {fileID: 4981005430428089354}
   - {fileID: 971688452824726766}
@@ -621,7 +622,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.073380254, y: -0.016656868}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -631,7 +632,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.32666665, y: 0.31333333}
+  m_Size: {x: 0.17990614, y: 0.27281666}
   m_EdgeRadius: 0
 --- !u!50 &6280943441886522824
 Rigidbody2D:
@@ -648,7 +649,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -696,7 +697,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   speed: 2
   maxWaitTime: 5
-  poopPrefab: {fileID: 0}
+  poopPrefab: {fileID: 1747892491687069544, guid: e8a9ca942fa6f244ba1d2ff52a6d5e31, type: 3}
+  eatTime: 2
   itchi: {fileID: 8132756126679623152}
 --- !u!114 &8132756126679623152
 MonoBehaviour:
@@ -762,7 +764,7 @@ MonoBehaviour:
   minWantTime: 0.1
   maxWantTime: 1
   hungerWant: 0
-  happinessWant: 0
+  happinessWant: 1
   hygieneWant: 0
 --- !u!1 &7128890384218792128
 GameObject:
@@ -871,3 +873,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WantDisplay
   thoughtBubble: {fileID: 4329387389259033734}
   want: {fileID: 458349116585347816}
+--- !u!1 &8285946675052270508
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8562586345146017971}
+  m_Layer: 0
+  m_Name: Head
+  m_TagString: ItchiHead
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8562586345146017971
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8285946675052270508}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.055, y: 0.026, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6881011845548596118}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

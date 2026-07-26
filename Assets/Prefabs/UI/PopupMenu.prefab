@@ -183,14 +183,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: -6364313616917825952, guid: 1fc64691a3edc3344986238c1a752c2c, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -291,7 +291,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Comb
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -428,7 +428,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Sponge
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -620,7 +620,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Mop Up
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -704,8 +704,10 @@ GameObject:
   - component: {fileID: 4441482970887343981}
   - component: {fileID: 7160878766732560615}
   - component: {fileID: 4987436469367833703}
+  - component: {fileID: 6668912409582050356}
+  - component: {fileID: 5964049839840380909}
   m_Layer: 5
-  m_Name: Soap
+  m_Name: Sponge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -812,7 +814,51 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7160878766732560615}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5964049839840380909}
+        m_TargetAssemblyTypeName: SpawnSuds, Assembly-CSharp
+        m_MethodName: AttachSudsToItchi
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6668912409582050356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5924882225023359800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfdf4c565f4ad06428273a7b2fd8589f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Toy
+  draggablePrefab: {fileID: 1837847401143880901, guid: fd189e395fe0f4942ad490d93fada329, type: 3}
+  popupMenu: {fileID: 449921567077062299}
+  spawnButton: {fileID: 4987436469367833703}
+--- !u!114 &5964049839840380909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5924882225023359800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 533cac00e1e849b49b49e6505025aabe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  itchi: {fileID: 0}
+  sudsPrefab: {fileID: 3120369493060791163, guid: a2a1145a79d0e794980add120782d568, type: 3}
+  MinSudsAmount: 10
+  MaxSudsAmount: 40
+  status: {fileID: 0}
 --- !u!1 &6053964980304839253
 GameObject:
   m_ObjectHideFlags: 0
@@ -900,6 +946,7 @@ GameObject:
   - component: {fileID: 8858575446258489139}
   - component: {fileID: 8105181345533479107}
   - component: {fileID: 1807329642604127525}
+  - component: {fileID: 4943741168486687692}
   m_Layer: 5
   m_Name: Sweep
   m_TagString: Untagged
@@ -1008,7 +1055,47 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8105181345533479107}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4943741168486687692}
+        m_TargetAssemblyTypeName: Sweep, Assembly-CSharp
+        m_MethodName: StartSweep
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 449921567077062299}
+        m_TargetAssemblyTypeName: PopupMenu, Assembly-CSharp
+        m_MethodName: ToggleMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &4943741168486687692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6224864299734339801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ffede552cb617d4d9ee84064a682523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Sweep
+  mopPrefab: {fileID: 8914717152473110823, guid: d77fb1021543cb94c9e130ac3fbbcda6, type: 3}
+  startPoint: {x: -10, y: 0}
+  endPoint: {x: 10, y: 0}
+  moveSpeed: 5
 --- !u!1 &6358318304495825378
 GameObject:
   m_ObjectHideFlags: 0
@@ -1021,6 +1108,7 @@ GameObject:
   - component: {fileID: 6062172596192910300}
   - component: {fileID: 5559503341548855870}
   - component: {fileID: 3868434883212868885}
+  - component: {fileID: 2613542868067087696}
   m_Layer: 5
   m_Name: Comb
   m_TagString: Untagged
@@ -1130,3 +1218,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2613542868067087696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6358318304495825378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfdf4c565f4ad06428273a7b2fd8589f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Toy
+  draggablePrefab: {fileID: 518956110513847482, guid: 290ee87d275d0364697d5f1a7d8d71fd, type: 3}
+  popupMenu: {fileID: 449921567077062299}
+  spawnButton: {fileID: 3868434883212868885}

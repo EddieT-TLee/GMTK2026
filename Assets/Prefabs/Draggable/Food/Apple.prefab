@@ -10,15 +10,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5025739614553899330, guid: 0029f0b1926c86d43b0076004cbd9865, type: 3}
       propertyPath: m_Name
-      value: Apple Variant
+      value: Apple
+      objectReference: {fileID: 0}
+    - target: {fileID: 6730741357460327761, guid: 0029f0b1926c86d43b0076004cbd9865, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6730741357460327761, guid: 0029f0b1926c86d43b0076004cbd9865, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6730741357460327761, guid: 0029f0b1926c86d43b0076004cbd9865, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.12771
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6730741357460327761, guid: 0029f0b1926c86d43b0076004cbd9865, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.67103
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6730741357460327761, guid: 0029f0b1926c86d43b0076004cbd9865, type: 3}
       propertyPath: m_LocalPosition.z
