@@ -148,7 +148,7 @@ public class Wander : MonoBehaviour
     
     private void PickTargetPosition()
     {
-        float randomX = Random.Range(-0.9f, 0.9f);
+        float randomX = Random.Range(-0.6f, 0.6f);
 
         // Change the positon to a world position
         float halfWidth = cam.orthographicSize * cam.aspect;

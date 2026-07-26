@@ -8,6 +8,7 @@ TagManager:
   - Itchi
   - Suds
   - ItchiHead
+  - Mop
   layers:
   - Default
   - TransparentFX
@@ -42,6 +43,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 3644975419
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
