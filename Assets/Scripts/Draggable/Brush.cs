@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -15,6 +16,7 @@ public class Brush : MonoBehaviour
     [SerializeField] private float brushingWeight = 50f;
 
     private Draggable draggable;
+    private Animator animator;
     private Status status;
     private bool isDragging;
     private bool isInZone;
@@ -35,6 +37,7 @@ public class Brush : MonoBehaviour
     private void Start()
     {
         status = GameObject.FindGameObjectWithTag(brushZoneTag).GetComponent<Status>();
+        animator = status.gameObject.GetComponent<Animator>();
     }
 
     private void OnEnable()
@@ -80,7 +83,10 @@ public class Brush : MonoBehaviour
                 Destroy(gameObject);
                 brushCompleted = true;
 
-                status.SatisfyWant(Status.HygieneWant.Comb);
+                if (!status.SatisfyWant(Status.HygieneWant.Comb))
+                {
+                    animator.Play("HeadShake");
+                }
                 BrushingCompleted?.Invoke();
             }
         }

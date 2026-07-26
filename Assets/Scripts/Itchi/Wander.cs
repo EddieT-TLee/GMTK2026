@@ -30,7 +30,7 @@ public class Wander : MonoBehaviour
     private float eatTimer;
 
     private bool gotFood;
-    private Status.HungerWant food = Status.HungerWant.Satisfied;
+    private bool isFoodGood;
 
     private bool isDirty;
     private bool isDead;
@@ -50,10 +50,13 @@ public class Wander : MonoBehaviour
     
     void Update()
     {
+        if (isDead) return;
+
         if (!isDead && itchi.HealthPercentage <= 0)
         {
             isDead = true;
             StartCoroutine(Death());
+            return;
         }
 
         if (isEating)
@@ -145,7 +148,7 @@ public class Wander : MonoBehaviour
         if (gotFood && isEating)
         {
             animator.SetBool("IsWalking", false);
-            animator.SetBool("IsEating", isEating);
+            animator.SetBool("IsEating", true);
             animator.SetBool("IsDirty", isDirty);
             gotFood = false;
             return;
@@ -180,7 +183,7 @@ public class Wander : MonoBehaviour
         // Debug.Log(randomX);
     }
     
-    private void SetHygieneStatus(float current, float max) => isDirty = (current / max < 0.25);
+    private void SetHygieneStatus(float current, float max) => isDirty = (current / max < 0.4);
 
     private void EatFood(Status.HungerWant foodEaten)
     {
@@ -188,7 +191,7 @@ public class Wander : MonoBehaviour
         eatTimer = 0f;
         isChasing = false;
         gotFood = true;
-        food = foodEaten;
+        isFoodGood = status.SatisfyWant(foodEaten);
 
         Debug.Log("Started Eating");
     }
@@ -218,19 +221,28 @@ public class Wander : MonoBehaviour
 
         yield return null;
 
+        yield return new WaitUntil(() =>
+            (animator.GetCurrentAnimatorStateInfo(0).IsName("Death") ||
+            animator.GetCurrentAnimatorStateInfo(0).IsName("DirtyDeath")) &&
+            animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f
+        );
+
+        yield return null;
+
         PauseManager.Pause();
     }
 
     private IEnumerator ProcessFood()
     {
-        if (!status.SatisfyWant(food))
+        if (!isFoodGood)
         {
             animator.Play("HeadShake");
 
             yield return null;
 
             yield return new WaitUntil(() =>
-                animator.GetCurrentAnimatorStateInfo(0).IsName("HeadShake") &&
+                (animator.GetCurrentAnimatorStateInfo(0).IsName("HeadShake") ||
+                animator.GetCurrentAnimatorStateInfo(0).IsName("DirtyHeadShake")) &&
                 animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f
             );
         }

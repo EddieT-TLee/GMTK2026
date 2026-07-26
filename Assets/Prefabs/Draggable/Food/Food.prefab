@@ -163,6 +163,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Food
   food: {fileID: 274691503359637623}
+  apple: 0
+  milk: 0
+  chickenNoodleSoup: 0
+  pills: 0
 --- !u!58 &8488491516807046831
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -198,4 +202,4 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: -0.0025309802, y: 0}
-  m_Radius: 0.16413566
+  m_Radius: 0.5

@@ -13,7 +13,6 @@ public class Draggable : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, 
     public event Action<PointerEventData> Drag;
     public event Action<PointerEventData> EndDrag;
     
-
     private void Awake()
     {
         cam = Camera.main;

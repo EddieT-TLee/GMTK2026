@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -78,26 +79,21 @@ public class Ball : MonoBehaviour
             rotationSpeed *= Mathf.Abs(moveDirection.x);
 
             state = State.Bouncing;
-            animator.Play("Play");
+
+            Status.HappinessWant playThing = Status.HappinessWant.Satisfied;
 
             if (ballWant)
             {
-                status.SatisfyWant(Status.HappinessWant.Ball);
-                return;
-            }
-            
-            if (carrotWant)
+                playThing = Status.HappinessWant.Ball;
+            } else if (carrotWant)
             {
-                status.SatisfyWant(Status.HappinessWant.CarrotOnAStick);
-                return;
+                playThing = Status.HappinessWant.CarrotOnAStick;
+            } else if (tamagotchiWant)
+            {
+                playThing = Status.HappinessWant.Tamagotchi;
             }
 
-            if (tamagotchiWant)
-            {
-                status.SatisfyWant(Status.HappinessWant.Tamagotchi);
-                return;
-            }
-
+            StartCoroutine(BounceAnimation(playThing));
         }
     }
 
@@ -116,4 +112,25 @@ public class Ball : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    private IEnumerator BounceAnimation(Status.HappinessWant playThing)
+    {
+        animator.Play("Play");
+
+        bool satisfied = status.SatisfyWant(playThing);
+
+        yield return null;
+
+        yield return new WaitUntil(() =>
+            (animator.GetCurrentAnimatorStateInfo(0).IsName("Play") ||
+            animator.GetCurrentAnimatorStateInfo(0).IsName("DirtyPlay")) &&
+            animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1
+        );
+
+        if (!satisfied)
+        {
+            animator.Play("HeadShake");
+        }
+    }
+
 }

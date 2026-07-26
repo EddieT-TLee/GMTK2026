@@ -103,19 +103,19 @@ public enum Background { Hospital, Garden, FastFood }
         switch (bg)
         {
             case Background.Hospital:
-                HungerDecayRate = 3;
-                HappinessDecayRate = 3;
-                HygieneDecayRate = 1;
+                HungerDecayRate = 1.5f;
+                HappinessDecayRate = 1.5f;
+                HygieneDecayRate = 1f;
                 break;
             case Background.Garden:
-                HungerDecayRate = 3;
-                HappinessDecayRate = 1;
-                HygieneDecayRate = 3;
+                HungerDecayRate = 1.5f;
+                HappinessDecayRate = 1f;
+                HygieneDecayRate = 1.5f;
                 break;
             case Background.FastFood:
-                HungerDecayRate = 1;
-                HappinessDecayRate = 3;
-                HygieneDecayRate = 3;
+                HungerDecayRate = 1f;
+                HappinessDecayRate = 1.5f;
+                HygieneDecayRate = 1.5f;
                 break;
         }
     }

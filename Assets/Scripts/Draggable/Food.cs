@@ -14,7 +14,6 @@ public class Food : MonoBehaviour
     public static event Action<Status.HungerWant> foodAte;
     private Rigidbody2D rb;
     private Status status;
-    private Animator animator;
 
     void Start()
     {
@@ -22,7 +21,6 @@ public class Food : MonoBehaviour
         rb.bodyType = RigidbodyType2D.Static;    
 
         status = GameObject.FindGameObjectWithTag("Itchi").GetComponent<Status>();
-        animator = status.gameObject.GetComponent<Animator>();
     }
 
     private void OnEnable()
