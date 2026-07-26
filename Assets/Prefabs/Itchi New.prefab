@@ -673,7 +673,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 1c0ada94762892c4d8a3440d4a35d5c5, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
@@ -699,7 +699,12 @@ MonoBehaviour:
   maxWaitTime: 5
   poopPrefab: {fileID: 1747892491687069544, guid: e8a9ca942fa6f244ba1d2ff52a6d5e31, type: 3}
   eatTime: 2
+  cam: {fileID: 0}
   itchi: {fileID: 8132756126679623152}
+  status: {fileID: 4041442044327848990}
+  hungerDisplay: {fileID: 5329026046962967986}
+  happinessDisplay: {fileID: 3593132780156428388}
+  hygieneDisplay: {fileID: 5950412307503323847}
 --- !u!114 &8132756126679623152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -720,11 +725,11 @@ MonoBehaviour:
   CurrentHunger: 100
   CurrentHappiness: 100
   CurrentHygiene: 100
-  HungerDecayRate: 1
-  HappinessDecayRate: 4
-  HygieneDecayRate: 2
-  HungerWeight: 0.01
-  HappinessWeight: 0.04
+  HungerDecayRate: 1.5
+  HappinessDecayRate: 1.5
+  HygieneDecayRate: 1
+  HungerWeight: 0.03
+  HappinessWeight: 0.025
   HygieneWeight: 0.02
 --- !u!114 &4041442044327848990
 MonoBehaviour:
@@ -760,11 +765,11 @@ MonoBehaviour:
   - wantName: Tamagotchi
     sprite: {fileID: 5022003190396300192, guid: 91dbf096ff361bc4a901f0103eeee1ce, type: 3}
   wantThreshold: 0.8
-  wantSatisfyIncrease: 0.1
-  minWantTime: 0.1
-  maxWantTime: 1
+  wantSatisfyIncrease: 0.2
+  minWantTime: 1
+  maxWantTime: 3
   hungerWant: 0
-  happinessWant: 1
+  happinessWant: 0
   hygieneWant: 0
 --- !u!1 &7128890384218792128
 GameObject:

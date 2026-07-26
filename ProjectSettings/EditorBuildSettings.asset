@@ -14,5 +14,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/RealHealthyPatientCare.unity
     guid: 31d0a306c4c3eca4b92f89de8e896fa5
+  - enabled: 1
+    path: Assets/Scenes/EndScreen.unity
+    guid: b445f76d5ffd05a4caf4e5e0485402d8
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}

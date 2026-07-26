@@ -4909,17 +4909,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 729934159}
   m_CullTransparentMesh: 1
---- !u!114 &735896919 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3593132780156428388, guid: faf1a84e9367da44b981569398af3d3d, type: 3}
-  m_PrefabInstance: {fileID: 892626967}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd55d5bf0ee2cb84196d0d0843e9bac6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WantDisplay
 --- !u!1 &753693291
 GameObject:
   m_ObjectHideFlags: 0
@@ -5731,17 +5720,6 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!114 &870775087 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5329026046962967986, guid: faf1a84e9367da44b981569398af3d3d, type: 3}
-  m_PrefabInstance: {fileID: 892626967}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd55d5bf0ee2cb84196d0d0843e9bac6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WantDisplay
 --- !u!1001 &892626967
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5750,42 +5728,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3502676513461800277, guid: faf1a84e9367da44b981569398af3d3d, type: 3}
-      propertyPath: m_UpdateMode
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 3518974127578552058, guid: faf1a84e9367da44b981569398af3d3d, type: 3}
-      propertyPath: status
+      propertyPath: cam
       value: 
-      objectReference: {fileID: 309499777}
-    - target: {fileID: 3518974127578552058, guid: faf1a84e9367da44b981569398af3d3d, type: 3}
-      propertyPath: hungerDisplay
-      value: 
-      objectReference: {fileID: 870775087}
-    - target: {fileID: 3518974127578552058, guid: faf1a84e9367da44b981569398af3d3d, type: 3}
-      propertyPath: hygieneDisplay
-      value: 
-      objectReference: {fileID: 1005712734}
-    - target: {fileID: 3518974127578552058, guid: faf1a84e9367da44b981569398af3d3d, type: 3}
-      propertyPath: happinessDisplay
-      value: 
-      objectReference: {fileID: 735896919}
-    - target: {fileID: 4041442044327848990, guid: faf1a84e9367da44b981569398af3d3d, type: 3}
-      propertyPath: maxWantTime
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4041442044327848990, guid: faf1a84e9367da44b981569398af3d3d, type: 3}
-      propertyPath: minWantTime
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4041442044327848990, guid: faf1a84e9367da44b981569398af3d3d, type: 3}
-      propertyPath: happinessWant
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4041442044327848990, guid: faf1a84e9367da44b981569398af3d3d, type: 3}
-      propertyPath: wantSatisfyIncrease
-      value: 0.2
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 519420031}
     - target: {fileID: 4697312783679603575, guid: faf1a84e9367da44b981569398af3d3d, type: 3}
       propertyPath: m_Name
       value: Itchi New
@@ -5829,30 +5775,6 @@ PrefabInstance:
     - target: {fileID: 6881011845548596118, guid: faf1a84e9367da44b981569398af3d3d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8132756126679623152, guid: faf1a84e9367da44b981569398af3d3d, type: 3}
-      propertyPath: HungerWeight
-      value: 0.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 8132756126679623152, guid: faf1a84e9367da44b981569398af3d3d, type: 3}
-      propertyPath: HygieneWeight
-      value: 0.02
-      objectReference: {fileID: 0}
-    - target: {fileID: 8132756126679623152, guid: faf1a84e9367da44b981569398af3d3d, type: 3}
-      propertyPath: HappinessWeight
-      value: 0.025
-      objectReference: {fileID: 0}
-    - target: {fileID: 8132756126679623152, guid: faf1a84e9367da44b981569398af3d3d, type: 3}
-      propertyPath: HungerDecayRate
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8132756126679623152, guid: faf1a84e9367da44b981569398af3d3d, type: 3}
-      propertyPath: HygieneDecayRate
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8132756126679623152, guid: faf1a84e9367da44b981569398af3d3d, type: 3}
-      propertyPath: HappinessDecayRate
-      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6400,17 +6322,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 998716329}
   m_CullTransparentMesh: 1
---- !u!114 &1005712734 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5950412307503323847, guid: faf1a84e9367da44b981569398af3d3d, type: 3}
-  m_PrefabInstance: {fileID: 892626967}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd55d5bf0ee2cb84196d0d0843e9bac6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WantDisplay
 --- !u!1 &1027735617
 GameObject:
   m_ObjectHideFlags: 0

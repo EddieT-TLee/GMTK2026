@@ -7,6 +7,7 @@ public class Wander : MonoBehaviour
     [SerializeField] private float maxWaitTime = 5;
     [SerializeField] private GameObject poopPrefab;
     [SerializeField] private float eatTime = 2f;
+    [SerializeField] private Camera cam;
     
     [Header("Itchi Refrence for Events")]
     [SerializeField] private Stats itchi;
@@ -17,7 +18,6 @@ public class Wander : MonoBehaviour
     [SerializeField] private WantDisplay happinessDisplay;
     [SerializeField] private WantDisplay hygieneDisplay;
 
-    private Camera cam;
     private Animator animator;
 
     private Vector3 wanderTarget;
@@ -40,7 +40,8 @@ public class Wander : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     { 
-        cam = Camera.main;
+        if(cam == null) cam =  Camera.main;
+        
         PickTargetPosition();
         WalkTimeInterval = Random.Range(3, maxWaitTime);
         animator = GetComponent<Animator>();
@@ -230,6 +231,8 @@ public class Wander : MonoBehaviour
         yield return null;
 
         PauseManager.Pause();
+        
+        yield return Manager.instance.StartCoroutine(Manager.instance.ChangeScene("EndScreen", "RealHealthyPatientCare"));
     }
 
     private IEnumerator ProcessFood()
