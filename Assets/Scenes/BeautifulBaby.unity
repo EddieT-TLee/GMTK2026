@@ -354,7 +354,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: G
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1653,37 +1653,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39a7dcaa39c14134da574838774524b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SegmentedBar
---- !u!1 &341514191 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6224864299734339801, guid: 27692aa09a39dd044b692b49f67ed776, type: 3}
-  m_PrefabInstance: {fileID: 724518616}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &341514193 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1807329642604127525, guid: 27692aa09a39dd044b692b49f67ed776, type: 3}
-  m_PrefabInstance: {fileID: 724518616}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 341514191}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
---- !u!114 &341514196
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 341514191}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bfdf4c565f4ad06428273a7b2fd8589f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Toy
-  draggablePrefab: {fileID: 1916402753585174831, guid: 2286094e19d57854e932c85f299f3fd1, type: 3}
-  popupMenu: {fileID: 1068884197}
-  spawnButton: {fileID: 341514193}
 --- !u!224 &378598128 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4830919592167914115, guid: 27692aa09a39dd044b692b49f67ed776, type: 3}
@@ -2515,6 +2484,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 115842fa965c79b42a90adb9a07bf209, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  backgrounds:
+  - {fileID: 7104657265063476430, guid: 0516abbcf8163584eb92fbaf36506bce, type: 3}
+  - {fileID: 5435936245034971430, guid: cec1c52600bbc3142aaf5e15ee704797, type: 3}
+  - {fileID: 4310420219042659202, guid: e54ca661afe7f9e42ab36bd23c591748, type: 3}
+  background: {fileID: 252198693}
+  itchi: {fileID: 309499776}
 --- !u!1 &575232105
 GameObject:
   m_ObjectHideFlags: 0
@@ -3394,9 +3369,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3147366071252487267, guid: 27692aa09a39dd044b692b49f67ed776, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1420869756}
-    - targetCorrespondingSourceObject: {fileID: 6224864299734339801, guid: 27692aa09a39dd044b692b49f67ed776, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 341514196}
   m_SourcePrefab: {fileID: 100100000, guid: 27692aa09a39dd044b692b49f67ed776, type: 3}
 --- !u!1 &816036296
 GameObject:
@@ -3613,7 +3585,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 816357986}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 571607392}
+        m_TargetAssemblyTypeName: LocationChanger, Assembly-CSharp
+        m_MethodName: ChangeBackground
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &816357986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3634,8 +3618,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -4398830042263925562, guid: 3e7afffb54c530643a15bdcd566e4d1a, type: 3}
-  m_Type: 1
+  m_Sprite: {fileID: -5960192198653083972, guid: 50346921d0edee04e8b4af86ac077d8a, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -5176,7 +5160,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1045231725}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 571607392}
+        m_TargetAssemblyTypeName: LocationChanger, Assembly-CSharp
+        m_MethodName: ChangeBackground
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1045231725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5197,8 +5193,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -4398830042263925562, guid: 3e7afffb54c530643a15bdcd566e4d1a, type: 3}
-  m_Type: 1
+  m_Sprite: {fileID: -941600320916624286, guid: 7b5930ecaf90f924a971c8a9ddf24307, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -5764,6 +5760,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d06b82eb3af2cfc4884f27e41662f015, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  faceAnimator: {fileID: 0}
   stats: {fileID: 309499776}
   fill: {fileID: 819041835}
 --- !u!1 &1180032769
@@ -6854,9 +6851,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3147366071252487267, guid: 27692aa09a39dd044b692b49f67ed776, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1641932069}
-    - targetCorrespondingSourceObject: {fileID: 6358318304495825378, guid: 27692aa09a39dd044b692b49f67ed776, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1885539235}
   m_SourcePrefab: {fileID: 100100000, guid: 27692aa09a39dd044b692b49f67ed776, type: 3}
 --- !u!1 &1334159660
 GameObject:
@@ -7230,7 +7224,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: C
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -9150,7 +9144,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: H
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -9744,7 +9738,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1807537806}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 571607392}
+        m_TargetAssemblyTypeName: LocationChanger, Assembly-CSharp
+        m_MethodName: ChangeBackground
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1807537806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9765,8 +9771,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -4398830042263925562, guid: 3e7afffb54c530643a15bdcd566e4d1a, type: 3}
-  m_Type: 1
+  m_Sprite: {fileID: -7006198755606725369, guid: 244f83670c6ff5446ba9761ae3ca79a7, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -9783,37 +9789,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1807537803}
   m_CullTransparentMesh: 1
---- !u!1 &1885539233 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6358318304495825378, guid: 27692aa09a39dd044b692b49f67ed776, type: 3}
-  m_PrefabInstance: {fileID: 1330079021}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1885539235
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1885539233}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bfdf4c565f4ad06428273a7b2fd8589f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Toy
-  draggablePrefab: {fileID: 4225229063185730741, guid: e65c5758c2b067f47bf0730a7e7d1c5c, type: 3}
-  popupMenu: {fileID: 2026180407}
-  spawnButton: {fileID: 1885539236}
---- !u!114 &1885539236 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3868434883212868885, guid: 27692aa09a39dd044b692b49f67ed776, type: 3}
-  m_PrefabInstance: {fileID: 1330079021}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1885539233}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!1 &1906018541
 GameObject:
   m_ObjectHideFlags: 0
@@ -10646,17 +10621,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2002308306}
   m_CullTransparentMesh: 1
---- !u!114 &2026180407 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 449921567077062299, guid: 27692aa09a39dd044b692b49f67ed776, type: 3}
-  m_PrefabInstance: {fileID: 1330079021}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37b0d8a56f7781b46809635614559311, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PopupMenu
 --- !u!1 &2032154457
 GameObject:
   m_ObjectHideFlags: 0

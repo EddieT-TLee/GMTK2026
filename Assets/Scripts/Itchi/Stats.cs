@@ -35,7 +35,7 @@ public class Stats : MonoBehaviour
     public event Action<float, float> OnHygieneChanged;
     public event Action OnDeath;
 
-    public enum Background { Hospital, Garden, FastFood }
+public enum Background { Hospital, Garden, FastFood }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
