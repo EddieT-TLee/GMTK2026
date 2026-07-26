@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class Tutorial : MonoBehaviour
 {
-    [SerializeField] private Image tutorialImage;
+    [SerializeField] private SpriteRenderer tutorialSprite;
     [SerializeField] private Button nextButton;
     [SerializeField] private TMP_Text buttonText;
     [SerializeField] private List<Sprite> nextImages = new();
@@ -58,21 +58,21 @@ public class Tutorial : MonoBehaviour
         {
             elapsed += Time.deltaTime;
             float t = elapsed / fadeDuration;
-            Debug.Log($"Fading:\tAlpha = {tutorialImage.color.a}\tt = {t}");
+            Debug.Log($"Fading:\tAlpha = {tutorialSprite.color.a}\tt = {t}");
 
-            Color temp = tutorialImage.color;
+            Color temp = tutorialSprite.color;
             temp.a = Mathf.Lerp(temp.a, 0, t);
 
-            tutorialImage.color = temp;
+            tutorialSprite.color = temp;
             yield return null;
         }
 
-        Color temp1 = tutorialImage.color;
+        Color temp1 = tutorialSprite.color;
         temp1.a = 0;
 
-        tutorialImage.color = temp1;
+        tutorialSprite.color = temp1;
 
-        tutorialImage.sprite = imageStack.Dequeue();
+        tutorialSprite.sprite = imageStack.Dequeue();
             
         elapsed = 0f;
 
@@ -81,17 +81,17 @@ public class Tutorial : MonoBehaviour
             elapsed += Time.deltaTime;
             float t = elapsed / fadeDuration;
 
-            Color temp = tutorialImage.color;
+            Color temp = tutorialSprite.color;
             temp.a = Mathf.Lerp(temp.a, 1, t);
 
-            tutorialImage.color = temp;
+            tutorialSprite.color = temp;
             yield return null;
         }
 
-        temp1 = tutorialImage.color;
+        temp1 = tutorialSprite.color;
         temp1.a = 1;
 
-        tutorialImage.color = temp1;
+        tutorialSprite.color = temp1;
         coroutine = null;
     }
 }
