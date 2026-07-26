@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/TitleScreen.unity
     guid: 24437f4110b9672418cb8cba4e2e485b
   - enabled: 1
+    path: Assets/Scenes/Tutorial.unity
+    guid: 976b296e222775645908b679da689d3a
+  - enabled: 1
     path: Assets/Scenes/RealHealthyPatientCare.unity
     guid: 31d0a306c4c3eca4b92f89de8e896fa5
   - enabled: 1

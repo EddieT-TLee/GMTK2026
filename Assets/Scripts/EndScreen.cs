@@ -12,12 +12,15 @@ public class EndScreen : MonoBehaviour
     [Header("Text Fields that can be changes")] 
     [SerializeField] private TMP_Text EncouragingText;
     [SerializeField] private TMP_Text TimeText;
-    
+
     void Start()
     {
         int a = Random.Range(0, WordsOfEncouragement.Count);
         EncouragingText.text = WordsOfEncouragement[a];
-       
+
+        int minutes = Mathf.FloorToInt(PauseManager.secondsPassed / 60f);
+        int seconds = Mathf.FloorToInt(PauseManager.secondsPassed % 60f); 
+        TimeText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
     void Update()

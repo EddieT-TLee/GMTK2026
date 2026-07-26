@@ -659,7 +659,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 2.424, y: 74}
-  m_SizeDelta: {x: 500, y: 125}
+  m_SizeDelta: {x: 624.6786, y: 125}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1281742993
 MonoBehaviour:
@@ -921,6 +921,17 @@ MonoBehaviour:
   WordsOfEncouragement:
   - YOUS SUCK
   - At least you tried? BUT NOT HARD ENOUGH!!
+  - WORST CARETAKER EVER
+  - Itchi deserved better...\nBETTER THAN YOU
+  - R.I.P Itchi\n07/22/2026 - 07/26/2026
+  - BETTER LUCK NEXT TIME
+  - WENT TO THE LIGHT
+  - '*moment of slience*'
+  - GONE TOO SOON
+  - It kept going downhill...
+  - :(
+  - '):'
+  - Couldn't scratch Itchi's itch...
   EncouragingText: {fileID: 1281742993}
   TimeText: {fileID: 1935124001}
 --- !u!1 &1935123999

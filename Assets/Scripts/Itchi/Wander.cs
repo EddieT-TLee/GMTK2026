@@ -49,6 +49,8 @@ public class Wander : MonoBehaviour
         animator = GetComponent<Animator>();
         poopTimeInterval = Random.Range(5, 10);
 
+        PauseManager.ClearTime();
+        PauseManager.StartTime();
     }
     
     void Update()
@@ -211,6 +213,7 @@ public class Wander : MonoBehaviour
 
     private IEnumerator Death()
     {
+        PauseManager.StopTime();
         if (isDirty)
         {
             animator.Play("Death");

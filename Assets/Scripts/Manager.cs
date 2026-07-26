@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class Manager : MonoBehaviour{
+public class Manager : MonoBehaviour {
     public static Manager instance { get; private set; }
 
     [SerializeField] private Image fadeImage;

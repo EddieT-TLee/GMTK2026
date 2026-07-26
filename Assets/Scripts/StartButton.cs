@@ -1,11 +1,11 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class StartButton : MonoBehaviour
 {
     private bool isChangingScene = false;
-    public void ChangeToMain()
+    
+    public void ChangeToTutorial()
     {
         if (isChangingScene) return;
         StartCoroutine(WaitThenChange());
@@ -14,7 +14,7 @@ public class StartButton : MonoBehaviour
     private IEnumerator WaitThenChange()
     {
         isChangingScene = true;
-        yield return Manager.instance.StartCoroutine(Manager.instance.ChangeScene("RealHealthyPatientCare", "TitleScreen"));
+        yield return Manager.instance.StartCoroutine(Manager.instance.ChangeScene("Tutorial", "TitleScreen"));
         isChangingScene = false;
     }
 }
