@@ -141,6 +141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Ball
   draggable: {fileID: 4225229063185730741}
+  hitClip: {fileID: 8300000, guid: e084113ce0d10b346b68e9b3ccd54079, type: 3}
   launchSpeed: 20
   bounceSpeed: 10
   bounceAngle: 45

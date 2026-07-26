@@ -12,6 +12,8 @@ public class Wander : MonoBehaviour
     [Header("Itchi Refrence for Events")]
     [SerializeField] private Stats itchi;
     [SerializeField] private Status status;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip eatingClip;
 
     [Header("Thought bubble references to disable upon death")]
     [SerializeField] private WantDisplay hungerDisplay;
@@ -194,6 +196,7 @@ public class Wander : MonoBehaviour
         gotFood = true;
         isFoodGood = status.SatisfyWant(foodEaten);
 
+        StartCoroutine(PlayEatingSound());
         Debug.Log("Started Eating");
     }
 
@@ -252,5 +255,15 @@ public class Wander : MonoBehaviour
 
         PickTargetPosition();
         WalkTimer = 0;
+    }
+
+    private IEnumerator PlayEatingSound()
+    {
+        while (true)
+        {
+            if (!isEating) break;
+            audioSource.PlayOneShot(eatingClip, 0.5f);
+            yield return new WaitForSeconds(eatingClip.length + 0.4f);
+        }
     }
 }

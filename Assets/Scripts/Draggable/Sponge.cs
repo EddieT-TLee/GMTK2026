@@ -4,6 +4,8 @@ using UnityEngine;
 public class Sponge : MonoBehaviour
 {
     [SerializeField] private string sudsTag = "Suds";
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip sudsCleaningClip;
 
     public event Action ScrubbingCompleted;
 
@@ -31,6 +33,7 @@ public class Sponge : MonoBehaviour
         if (suds != null)
         {
             suds.Scrub();
+            TryPlaySudsCleaningSound();
         }
     }
 
@@ -38,5 +41,14 @@ public class Sponge : MonoBehaviour
     {
         Debug.Log("Suds Cleared");
         ScrubbingCompleted?.Invoke();
+        Destroy(gameObject);
+    }
+
+    private void TryPlaySudsCleaningSound()
+    {
+        if (!audioSource.isPlaying)
+        {
+            audioSource.PlayOneShot(sudsCleaningClip);
+        }
     }
 }

@@ -13,6 +13,7 @@ public class SpawnSuds : MonoBehaviour
     [SerializeField] private int MaxSudsAmount = 40;
 
     [SerializeField] private Status status;
+    [SerializeField] private Animator animator;
 
     private readonly List<GameObject> activeSuds = new List<GameObject>();
 
@@ -54,7 +55,10 @@ public class SpawnSuds : MonoBehaviour
 
         if (activeSuds.Count == 0)
         {
-            status.SatisfyWant(Status.HygieneWant.Sponge);
+            if (!status.SatisfyWant(Status.HygieneWant.Sponge))
+            {
+                animator.Play("HeadShake");
+            }
             sudsCleared?.Invoke();
         }
     }

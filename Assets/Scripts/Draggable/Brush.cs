@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -18,9 +19,13 @@ public class Brush : MonoBehaviour
     private Draggable draggable;
     private Animator animator;
     private Status status;
-    private bool isDragging;
-    private bool isInZone;
-    private bool brushCompleted;
+
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip brushClip;
+
+    public bool isDragging;
+    public  bool isInZone;
+    public bool brushCompleted;
 
     private Vector3 lastPosition;
     private Vector3 lastDirection;
@@ -76,6 +81,8 @@ public class Brush : MonoBehaviour
             brushedTime += brushingWeight * Time.deltaTime;
             Debug.Log($"Brushing... {brushedTime:F2} / {requiredBrushTime}s");
 
+            TryPlayBrushSound();
+
             if (brushedTime >= requiredBrushTime)
             {
                 Debug.Log("Brush Works");   
@@ -108,5 +115,13 @@ public class Brush : MonoBehaviour
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag(brushZoneTag)) isInZone = false;
+    }
+
+    private void TryPlayBrushSound()
+    {
+        if (!audioSource.isPlaying)
+        {
+            audioSource.PlayOneShot(brushClip);
+        }
     }
 }

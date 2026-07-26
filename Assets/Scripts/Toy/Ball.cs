@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.EventSystems;
 
 public class Ball : MonoBehaviour
@@ -8,6 +9,8 @@ public class Ball : MonoBehaviour
     private Transform itchiHead;
     private Status status;
     private Animator animator;
+    private AudioSource audioSource;
+    [SerializeField] private AudioClip hitClip;
 
     [Header("Movement")]
     [SerializeField] private float launchSpeed = 8f;
@@ -35,7 +38,8 @@ public class Ball : MonoBehaviour
     {
         itchiHead = GameObject.FindGameObjectWithTag("ItchiHead").GetComponent<Transform>();
         status = GameObject.FindGameObjectWithTag("Itchi").GetComponent<Status>();
-        animator = status.GetComponent<Animator>();
+        animator = status.gameObject.GetComponent<Animator>();
+        audioSource = status.gameObject.GetComponent<AudioSource>();
         draggable.transform.position = transform.position;
         LaunchBall();
     }
@@ -94,6 +98,8 @@ public class Ball : MonoBehaviour
             }
 
             StartCoroutine(BounceAnimation(playThing));
+
+            audioSource.PlayOneShot(hitClip);
         }
     }
 
