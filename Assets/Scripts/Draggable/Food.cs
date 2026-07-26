@@ -1,10 +1,12 @@
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class Food : MonoBehaviour
 {
     [SerializeField] private Draggable food;
-    
+
+    public static event Action foodAte;
     private Rigidbody2D rb;
     void Start()
     {
@@ -33,5 +35,15 @@ public class Food : MonoBehaviour
     {
         rb.bodyType = RigidbodyType2D.Dynamic;
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Itchi")
+        {
+            Destroy(gameObject);
+            foodAte?.Invoke();
+        }
+    }
 }
+
 

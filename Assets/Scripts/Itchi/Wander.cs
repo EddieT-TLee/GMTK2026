@@ -6,6 +6,7 @@ public class Wander : MonoBehaviour
     [SerializeField] private float speed = 2;
     [SerializeField] private float maxWaitTime = 5;
     [SerializeField] private GameObject poopPrefab;
+    [SerializeField] private float eatTime = 2f;
     
     [Header("Itchi Refrence for Events")] [SerializeField]
     private Stats itchi;
@@ -19,6 +20,8 @@ public class Wander : MonoBehaviour
     private bool isChasing;
     private float poopTimer;
     private float poopTimeInterval;
+    private bool IsEating;
+    private float eatTimer;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -34,6 +37,21 @@ public class Wander : MonoBehaviour
 
     void Update()
     {
+
+        if (IsEating)
+        {
+            eatTimer += Time.deltaTime;
+            Debug.Log($"eatTimer: {eatTimer} / {eatTime}");
+            if (eatTimer > eatTime)
+            {
+                Debug.Log("Stopped");
+                StopEating();
+            }
+
+            UpdateAnimator();
+            return;
+        }
+        
         Draggable activeDraggable = ToyManager.CurrentDraggable;
         // Will probably add some for things to this for toys
         bool shouldChase = activeDraggable != null && activeDraggable.CompareTag("Food");
@@ -86,6 +104,7 @@ public class Wander : MonoBehaviour
         }
 
         itchi.OnHygieneChanged += SetHygieneStatus;
+        Food.foodAte += eatFood;
     }
 
     void OnDisable()
@@ -97,12 +116,21 @@ public class Wander : MonoBehaviour
         }
 
         itchi.OnHygieneChanged -= SetHygieneStatus;
+        Food.foodAte -= eatFood;
     }
 
     private void UpdateAnimator()
     {
         if (animator == null) return;
-
+        
+        // Don't Walk if eating
+        if (IsEating)
+        {
+            animator.SetBool("IsWalking", false);
+            animator.SetBool("IsEating", IsEating);
+            animator.SetBool("IsDirty", dirty);
+            return;
+        }
         // Walking is true Ithci hasn't reached their target yet
         float deltaX = wanderTarget.x - transform.position.x;
         bool isWalking = Mathf.Abs(deltaX) > 0.01f;
@@ -114,6 +142,7 @@ public class Wander : MonoBehaviour
         }
 
         animator.SetBool("IsWalking", isWalking);
+        animator.SetBool("IsEating", IsEating);
         animator.SetBool("IsDirty", dirty);
     }
     
@@ -132,7 +161,23 @@ public class Wander : MonoBehaviour
     }
     
     private void SetHygieneStatus(float current, float max) => dirty = (current / max < 0.25);
+
+    private void eatFood()
+    {
+        IsEating = true;
+        eatTimer = 0f;
+        isChasing = false;
     
-    
-    
+        Debug.Log("Started Eating");
+    }
+
+    private void StopEating()
+    {
+        Debug.Log("Stopped Eating");
+        IsEating = false;
+        eatTimer = 0f;
+
+        PickTargetPosition();
+        WalkTimer = 0;
+    }
 }

@@ -524,6 +524,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 105861784}
   m_CullTransparentMesh: 1
+--- !u!1 &114602588 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5924882225023359800, guid: 27692aa09a39dd044b692b49f67ed776, type: 3}
+  m_PrefabInstance: {fileID: 724518616}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &114602590 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4987436469367833703, guid: 27692aa09a39dd044b692b49f67ed776, type: 3}
+  m_PrefabInstance: {fileID: 724518616}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 114602588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+--- !u!114 &114602593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 114602588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfdf4c565f4ad06428273a7b2fd8589f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Toy
+  draggablePrefab: {fileID: 5281501547043164173, guid: 6913a0a408ec81a4f84a13574886b28f, type: 3}
+  popupMenu: {fileID: 1068884197}
+  spawnButton: {fileID: 114602590}
 --- !u!1 &115695626
 GameObject:
   m_ObjectHideFlags: 0
@@ -2085,6 +2116,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39a7dcaa39c14134da574838774524b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SegmentedBar
+--- !u!1 &341514191 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6224864299734339801, guid: 27692aa09a39dd044b692b49f67ed776, type: 3}
+  m_PrefabInstance: {fileID: 724518616}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &341514193 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1807329642604127525, guid: 27692aa09a39dd044b692b49f67ed776, type: 3}
+  m_PrefabInstance: {fileID: 724518616}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 341514191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+--- !u!114 &341514196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 341514191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfdf4c565f4ad06428273a7b2fd8589f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Toy
+  draggablePrefab: {fileID: 1916402753585174831, guid: 2286094e19d57854e932c85f299f3fd1, type: 3}
+  popupMenu: {fileID: 1068884197}
+  spawnButton: {fileID: 341514193}
 --- !u!224 &378598128 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4830919592167914115, guid: 27692aa09a39dd044b692b49f67ed776, type: 3}
@@ -3466,6 +3528,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6358318304495825378, guid: 27692aa09a39dd044b692b49f67ed776, type: 3}
       insertIndex: -1
       addedObject: {fileID: 163819736}
+    - targetCorrespondingSourceObject: {fileID: 6224864299734339801, guid: 27692aa09a39dd044b692b49f67ed776, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 341514196}
+    - targetCorrespondingSourceObject: {fileID: 5924882225023359800, guid: 27692aa09a39dd044b692b49f67ed776, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 114602593}
   m_SourcePrefab: {fileID: 100100000, guid: 27692aa09a39dd044b692b49f67ed776, type: 3}
 --- !u!1 &774503491
 GameObject:
@@ -7425,6 +7493,7 @@ GameObject:
   - component: {fileID: 1365904738}
   - component: {fileID: 1365904737}
   - component: {fileID: 1365904736}
+  - component: {fileID: 1365904739}
   m_Layer: 5
   m_Name: Medicine
   m_TagString: Untagged
@@ -7534,6 +7603,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1365904734}
   m_CullTransparentMesh: 1
+--- !u!114 &1365904739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1365904734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfdf4c565f4ad06428273a7b2fd8589f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Toy
+  draggablePrefab: {fileID: 7833962009460155717, guid: b08f6e1c3003a7f4f9dc836ca75bbac5, type: 3}
+  popupMenu: {fileID: 1068884197}
+  spawnButton: {fileID: 1365904736}
 --- !u!1 &1376127807
 GameObject:
   m_ObjectHideFlags: 0
@@ -10206,6 +10290,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Itchi
       objectReference: {fileID: 0}
+    - target: {fileID: 2855569915654524236, guid: a13acca91a7f3e141b13af3475ec4ce1, type: 3}
+      propertyPath: CurrentHunger
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 2855569915654524236, guid: a13acca91a7f3e141b13af3475ec4ce1, type: 3}
+      propertyPath: CurrentHygiene
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 5839965447956424342, guid: a13acca91a7f3e141b13af3475ec4ce1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -10245,6 +10337,10 @@ PrefabInstance:
     - target: {fileID: 5839965447956424342, guid: a13acca91a7f3e141b13af3475ec4ce1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8711876321785848059, guid: a13acca91a7f3e141b13af3475ec4ce1, type: 3}
+      propertyPath: IsEating
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8711876321785848059, guid: a13acca91a7f3e141b13af3475ec4ce1, type: 3}
       propertyPath: poopPrefab
